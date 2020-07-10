@@ -11,6 +11,11 @@ html {
 body {
     margin:0;
     padding:0;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
 }
 
 .container {
@@ -18,20 +23,26 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 2px solid yellow;
+    background-color: red;
+    flex: 0 1 auto;
 }
 
 .container > * + * {
     margin-top: 5px;
 }
 
+
 header{
     background-color: #d9b08c;
     text-align: center;
     width: 50%;
     margin:auto;
+    margin-top: 5px;
     padding:10px;
-    border-bottom-left-radius: 50px;;
-    border-bottom-right-radius: 50px;;
+    border-bottom-left-radius: 50px;
+    border-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
 
 #topDiv{
@@ -113,3 +124,8 @@ button:hover{
     transform: scale(2);
 }
 
+/* #outerRed {
+    background-color: red;
+    width:700px;
+    margin: auto;
+} */
