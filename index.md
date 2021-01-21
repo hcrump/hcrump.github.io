@@ -1,2 +1,2 @@
-![](rottenburg-1890s.jpg)
+![](/images/rottenburg-1890s.jpg)
 
