@@ -1,3 +1,2 @@
-[c++](cpp.md)
-[javascript](javascript.md)
-![](/images/bacon.jpg)
+![](/images/rottenburg-1890s.jpg)
+
