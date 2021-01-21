@@ -1,31 +1,6 @@
-#theme: jekyll-theme-hacker
+theme: jekyll-theme-cayman
 title: Welcome!
 author: Me!
 description: Just playing around...
-logo: bacon.jpg
-
-[c++](cpp.md)
-[javascript](javascript.md)
-[python](google.com)
 
 
-owner:
-  name: Horace Crump
-  avatar: bacon.jpg
-  bio: "This is a sample Jekyll academic website."
-  email: buh@buh.org
-  # Do not include the @ symbol in your Twitter username
-  twitter: horacecrump
-  linkedin: #username
-  github: hcrump
-  orcid: # ID Number (ex. 0000-0000-0000-0000)
-  researchgate: #username
-  mendeley: #username
-  google:
-    plus: #username
-    analytics:
-    verify:
-    scholar: #id
-
-
-theme: jekyll-theme-cayman
