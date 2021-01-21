@@ -1,7 +1,3 @@
----
-layout: page
-title: C++
----
 # C++
 ## Variables
 ```cpp
