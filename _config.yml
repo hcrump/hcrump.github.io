@@ -8,9 +8,9 @@ description: I can't go anywhere during the lockdown, so why not?
 
 
 # --- List of links in the navbar --- #
+###Notes
+[c++](cpp.md)
+[javascript](javascript.md)
 
-navbar-links:
-    About Me: "aboutme"
-    Notes: 
-        - C++: "cpp.md"
-        - Javascript: "javascript.md"
+# --- List of links in the navbar --- #
+
