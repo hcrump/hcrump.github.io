@@ -1,16 +1,10 @@
-
-# --- Reequired options --- #
-
 theme: jekyll-theme-hacker
 title: Welcome to my page!
 author: Me!
 description: I can't go anywhere during the lockdown, so why not?
 logo: bacon.jpg
 
-# --- List of links in the navbar --- #
-###Notes
-[c++](cpp.md)
-[javascript](javascript.md)
 
-# --- List of links in the navbar --- #
+
+
 
