@@ -219,7 +219,7 @@ const gigasecond = date => {
 
 ### Type Checking
 
-```
+```js
 typeOf x === 'number'
 isFinite(n)
 Number.isInteger(n)
@@ -228,7 +228,7 @@ isNaN // fails on "number" ex. "90". thinks it's a number
 
 ### Conversion
 
-```
+```js
 parseFloat(num.toFixed(1)) // number changed to 1 significant digit as string, back to float.
 num.toPrecision(2) // how many places to the right of the decimal place to show, eg. 10.02
 str.padStart(2,'0') // makes a 2 digit number and puts a zero if one digit, eg. 1 is 01, 9 is 09, 10 is still 10
@@ -245,6 +245,6 @@ throw new Error("Invalid bullshit!");
 
 ## TOPICS to clarify
 
-```
+```js
 optional chaining operator
 ```
