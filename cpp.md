@@ -30,7 +30,7 @@ setprecision(x)
 ios::fixed
 ```
 ### #include <string>
- 
+ ---
 ## Input/Output
 
 ### Input
@@ -60,4 +60,27 @@ cout << scientific << setprecision(2); //uses scientific notation
 ### Error
 ```cpp
 cerror
+```
+---
+## Precedences Stuff
+```cpp
+int val = x>=y>=x ? 1:0  // same as (x>=y)>=x ; left to right
+z += x < y ? x++ : y++; // x<y first, then z += (x|y), then ++; z not affected by ++;
+z += -x++ + ++y; // prefix happens before work and postfix happens after, so z += -x + (y+1), x++ doesn't affect anything here.
+x || y && z // && goes first. && takes precedence over ||. so x || (y&&z)
+```
+
+### Switch
+```cpp
+switch(val)
+{
+case 1:
+case 2:
+	cout << "case 1 will fallthrough without a break statement" << endl;
+case 3:
+	doSomething();
+	break;
+default:
+	cout << "if nothing matches" << endl;
+}
 ```
