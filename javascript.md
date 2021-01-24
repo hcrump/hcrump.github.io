@@ -213,6 +213,12 @@ const gigasecond = date => {
 };
 ```
 
+## Time
+```js
+this.minutes = (60 + (minutes % 60)) % 60; // calc the minute hand. pos/neg values work. ex. -90mins would be on 30.
+this.hours = (24 + ((hours + Math.floor(minutes / 60)) % 24)) % 24; // calc the hour hand +- vals work
+```
+
 ---
 
 ## Other
@@ -247,4 +253,15 @@ throw new Error("Invalid bullshit!");
 
 ```js
 optional chaining operator
+```
+
+### Flooring
+```js
+let num = 3.14  // want 3
+Math.floor(num) // standard but slow
+~~num   		// bitwise NOT
+num | 0			// bitwise OR
+num << 0		// bitwise Shift
+num >> 0		// bitwise Shift
+num >>> 0		// triple bitwise Shift
 ```
