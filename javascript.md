@@ -84,6 +84,20 @@ n + "";
 
 ### Array Misc
 
+##### create
+```js
+Array.from  // check
+let arr = [];
+let arr = new Array(); // check if length needed in ()
+let ar2 = [...arr] // need brackets or it will point to same memory
+let arr = Array.of();//check
+let arr = [].concat(arr2); 
+let arr = anything that returns an array //Object.keys/values and map/reduce/filter ,etc
+```
+##### other
+```js
+arr.fill // initialize
+```
 ##### Array to String
 
 ```js
@@ -154,15 +168,61 @@ if(arr.every(x => x === 0))
 let newarr = arr.sort(); //alphabetical sort
 let newarr = arr.sort((a, b) => a - b); //numeric sort
 ```
-
+### Array Notes
+```js
+foreach vs map: map returns an array,fast,chainable: foreach can mutate existing array, slow,not chainable.
+```
 ---
 
 ## Objects
 
 ### Object Misc
+```js
+let obj = {};
+let obj = new Object;
+
+
+```
+### Object Manipulation
+```js
+Object.fromEntries //creates an object out of pairs, eg. a Map
+Object.keys() //gets keys duh
+Object.values() //gets values (optional index)
+Object.entries()//gets key and value (optional index)
+```
+### Object Loops
+##### Object.values(obj)
+```js
+// gives the index (not the same as a numbered key!!)
+Object.values(obj).forEach((val, i) => {
+	console.log(i, val, typeof val);
+});
+//can use index,key,value
+Object.entries(obj).forEach(([key, val], i) => {
+	console.log(i, key, val);
+});
+//for ...of version
+for (let [i, [key, val]] of Object.entries(Object.entries(obj))) {
+	console.log(i, key, val);
+}
+// object of arrays 
+Object.entries(obj).forEach(([key, val]) => {
+	val.forEach(x => {
+		console.log(key, x);
+		anotherObj[x.toLowerCase()] = +key;
+	});
+});
+// map version
+Object.entries(obj).map(([key, val]) => {
+	val.map(x => (expected[x.toLowerCase()] = +key));
+});
+```
+### Object Misc
 
 ```js
 object dot notation can't be used with variables!
+use Map() of speed is important
+using Object.entries  etc is better than for...of except for speed.
 
 ```
 
@@ -172,6 +232,22 @@ object dot notation can't be used with variables!
 
 ### Function Misc
 
+
+
+## Random Interesting Snippets
+
+```js
+export const iterate = (object, func) => {
+  const entries = Object.entries(object).map(([key, value]) =>
+    Array.isArray(value)
+      ? [key, value.map(e => iterate(e, func))]
+      : typeof value === 'object'
+      ? [key, iterate(value, func)]
+      : [key, func(value)]
+  );
+  return Object.fromEntries(entries);
+};
+```
 ```js
 
 ```
