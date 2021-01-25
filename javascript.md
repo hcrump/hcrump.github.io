@@ -191,20 +191,25 @@ Object.values() //gets values (optional index)
 Object.entries()//gets key and value (optional index)
 ```
 ### Object Loops
-##### Object.values(obj)
+##### Object.values
 ```js
 // gives the index (not the same as a numbered key!!)
 Object.values(obj).forEach((val, i) => {
 	console.log(i, val, typeof val);
 });
+```
+##### Object.entries
+```js
 //can use index,key,value
 Object.entries(obj).forEach(([key, val], i) => {
 	console.log(i, key, val);
 });
+
 //for ...of version
 for (let [i, [key, val]] of Object.entries(Object.entries(obj))) {
 	console.log(i, key, val);
 }
+
 // object of arrays 
 Object.entries(obj).forEach(([key, val]) => {
 	val.forEach(x => {
@@ -212,6 +217,7 @@ Object.entries(obj).forEach(([key, val]) => {
 		anotherObj[x.toLowerCase()] = +key;
 	});
 });
+
 // map version
 Object.entries(obj).map(([key, val]) => {
 	val.map(x => (expected[x.toLowerCase()] = +key));
@@ -221,7 +227,7 @@ Object.entries(obj).map(([key, val]) => {
 
 ```js
 object dot notation can't be used with variables!
-use Map() of speed is important
+use Map() instead of object if speed is important
 using Object.entries  etc is better than for...of except for speed.
 
 ```
@@ -255,13 +261,13 @@ export const iterate = (object, func) => {
 ### Function Defaults
 
 ```js
+//see this a lot
 function eatFruit (fruit) {
     fruit = fruit || "strawberry";
     ...
 }
 
-or
-
+//better way probably
 function eatFruit (fruit='strawberry') {
     ...
 }
@@ -270,6 +276,38 @@ function eatFruit (fruit='strawberry') {
 ---
 
 ## Classes
+
+```js
+// basic example
+class Clock {
+	constructor(hours = 0, minutes = 0) {
+		this.minutes = (60 + (minutes % 60)) % 60;
+		this.hours = (24 + ((hours + Math.floor(minutes / 60)) % 24)) % 24;
+	}
+
+	toString() {
+		return (
+			this.hours.toString().padStart(2, "0") + ":" + this.minutes.toString().padStart(2, "0")
+		);
+	}
+
+	plus(mins) {
+		this.hours = (24 + ((this.hours + Math.floor((this.minutes + mins) / 60)) % 24)) % 24;
+		this.minutes = (60 + ((this.minutes + mins) % 60)) % 60;
+		return this.toString();
+	}
+
+	minus(mins) {
+		return this.plus(-mins);
+	}
+
+	equals(clock2) {
+		return this.toString() === clock2.toString();
+	}
+}
+
+let myClock = new Clock(50,22);
+```
 
 ---
 
