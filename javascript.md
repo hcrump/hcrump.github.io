@@ -66,10 +66,11 @@ str * 1;
 ### Integer to String
 
 ```js
-String(n);
-n.toString();
-"" + n;
-n + "";
+String(n); // works with null and undef
+n.toString(); // fails on null or undef
+"" + n; //concat
+n + ""; //same as above
+`${n}`; // template string seems fast
 ```
 
 ### String Methods
@@ -240,7 +241,7 @@ using Object.entries  etc is better than for...of except for speed.
 
 
 
-## Random Interesting Snippets
+### Random Interesting Snippets
 
 ```js
 export const iterate = (object, func) => {
@@ -258,7 +259,7 @@ export const iterate = (object, func) => {
 
 ```
 
-### Function Defaults
+### Function Defaults Parameters
 
 ```js
 //see this a lot
@@ -346,7 +347,7 @@ Number.isInteger(n)
 isNaN // fails on "number" ex. "90". thinks it's a number
 ```
 
-### Conversion
+### Formatting
 
 ```js
 parseFloat(num.toFixed(1)) // number changed to 1 significant digit as string, back to float.
@@ -360,15 +361,6 @@ str.padStart(2,'0') // makes a 2 digit number and puts a zero if one digit, eg. 
 ```js
 throw new Error("Invalid bullshit!");
 ```
-
----
-
-## TOPICS to clarify
-
-```js
-optional chaining operator
-```
-
 ### Flooring
 ```js
 let num = 3.14  // want 3
@@ -379,3 +371,11 @@ num << 0		// bitwise Shift
 num >> 0		// bitwise Shift
 num >>> 0		// triple bitwise Shift
 ```
+---
+
+## TOPICS to clarify
+
+```js
+optional chaining operator
+```
+
