@@ -55,22 +55,22 @@ if(str.replace(/\s/g,"")== "") // slow
 ### String to Integer
 
 ```js
-+str; //unitary
++str; 			//unary. my favorite.
 Number(str);
-Math.floor(str);
-~~str; // new math.floor
-parseInt(str); //slowest
+Math.floor(str);// Good but incorrect on negative division. 3 / -2 = -2, use Math.trunc()
+~~str; 			// new math.floor
+parseInt(str); 	//slowest
 str * 1;
 ```
 
 ### Integer to String
 
 ```js
-String(n); // works with null and undef
-n.toString(); // fails on null or undef
-"" + n; //concat
-n + ""; //same as above
-`${n}`; // template string seems fast
+String(n); 		// Most clear. Works with null and undef
+n.toString(); 	// fails on null or undef
+"" + n; 		// Simple. Just a concat
+n + ""; 		//same as above
+`${n}`; 		// Unclear, but template string seems fast
 ```
 
 ### String Methods
