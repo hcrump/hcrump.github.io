@@ -44,10 +44,14 @@ random.shuffle(list)
 
 ### List Copy
 
-```py
-.copy() or .deepcopy() since list copies point to each other
+need to check these, don't recall
 
-use b = a[:] to make true copy and not pointer
+```py
+lst.copy() # shallow copy
+lst.deepcopy() # check if this works
+list(lst) # nope, copies point to each other
+
+b = a[:] # to make true copy and not pointer
 ```
 
 #### Double List Reverse Sort
@@ -80,6 +84,7 @@ a.[key] = a.get(key,0)+1 # add keys to dict and increment (for counting)(k+1 or 
 a.setdefault('color','black') # set if not exist,nothing if exists
 
 dic.setdefault(i, []).append(movie) # sets a key and appends the list to a dict
+
 #dict.get vs dict.setdefault
 get returns a default if no key, setdefault sets the key if no key.
 ```
@@ -144,9 +149,10 @@ os.makedirs has \*\*kwargs exist_ok
 ## Other
 
 ```py
-if isinstance(obj,int)
 # use to compare type instead of type(x) = int
-swap variables a, b = b, a
+if isinstance(obj,int)
+# swap variables
+a, b = b, a
 ```
 
 ### Testing for...
@@ -216,10 +222,6 @@ urllib # url stuff
 webbrowser # opens url in browser. simple
 beautifulsoup # html parsing
 xml.etree.ElementTree # xml parsing
-requests # acclamied web module use it.
-import requests
-res=requests.get('http:#...')
-res.raise... # check for success download
 sys # system stuff like sys.exit()
 sqlite3 # db stuff
 json # json parsing read write
@@ -227,9 +229,6 @@ shelve # store vars,lists.dicts in a binary file
 os # file operations
 shutil # move/copy files/folders
 send2trash # sp? sends files to trash bin instead of deleting. Safer.
-
-#string copy/paste
-import pyperclip ...
 #dissassemble code (shows assembly instructions)
 import dis -> dis.dis(somefunction)
 ```
@@ -240,6 +239,7 @@ import dis -> dis.dis(somefunction)
 import re
 re.search('^From ',x) #return True or None
 x = re.find(...,x) # returns the index of the match
+#use findall to get list of all matches
 findall #returns list
 re.match(..)
 print re.sub(r'([\w\.-]+)@([\w\.-]+)', r'\1@yo-yo-dyne.com', str) # searcha and replace
@@ -250,11 +250,19 @@ x = re.compile(r'\d\d\d-\d\d\d-\d\d\d') # use compile to get re object
 (r'xxx',re.I)
 #re.DOTALL tells wildcard to match newlines as well. re.VERBOSE allows formatting of pattern with spaces and comments.
 x.search('my number is 415-555-1212') # use search method to get 1 match.
-#use findall to get list of all matches
 x.group() # prints output x.group(o) is all match, x.group(1) gives first match in parens ()
-if you use x.findall(...) without groups it returns tuples of the groups. otherwise it returns a list matches
+#if you use x.findall(...) without groups it returns tuples of the groups. otherwise it returns a list matches
 ^(?=._(?:jpg|png))(?!._(?:lua|camera)).\*$
 #first part matches, second excludes. ?: seems optional.
+```
+
+### requests
+
+```py
+# acclamied web module
+import requests
+res=requests.get('http:#...')
+res.raise... # check for success download
 ```
 
 ### XML
@@ -284,7 +292,8 @@ import urllib.request, urllib.parse, urllib.error
 
 ```py
 #convert secs to time
-import datetime -> str(datetime.timedelta(seconds=999.9))
+import datetime
+str(datetime.timedelta(seconds=999.9))
 tenths = t % 10 # these are to convert hundreths of secs ex. 9999 is actually 999.9 secs
 ones = t //10 % 10
 secs = t //100 % 6
@@ -295,7 +304,8 @@ mins = t // 600
 ### random
 
 ```py
-random.randrange(10) # 0-9 range,
+random.randrange(10) # 0-9 range
+random.randint(10) # 0-10 range
 random.randchoice('a,b') i think.
 ```
 
@@ -307,12 +317,9 @@ if **name**=='**main**':
     t = Timer(lambda: bubblesort1(lst))
     print(t.timeit(number=1))
 
-timeit.timeit('"-".join(str(n) for n in range(100))',
-number=10000)
-timeit.timeit('"-".join([str(n) for n in range(100)])',
-number=10000)
-timeit.timeit('"-".join(map(str, range(100)))',
-number=10000)
+timeit.timeit('"-".join(str(n) for n in range(100))', number=10000)
+timeit.timeit('"-".join([str(n) for n in range(100)])',number=10000)
+timeit.timeit('"-".join(map(str, range(100)))',number=10000)
 ```
 
 ### time.clock
