@@ -6,7 +6,9 @@
 
 ### String Functions/Methods
 
+```py
 //string casefold() method instead of lower()
+```
 
 ##### replace
 
@@ -18,9 +20,13 @@ do a thing...
 
 ### List Copy
 
+```py
 copy use .copy() or.deepcopy() since list copies point to each other
-or use b = a[:] to make true copy and not pointer
-//string casefold() method instead of lower()
+
+or
+
+use b = a[:] to make true copy and not pointer
+```
 
 ## Lists
 
@@ -28,6 +34,7 @@ or use b = a[:] to make true copy and not pointer
 
 ### dict check/set
 
+```py
 a.get('b','somedefault') // get key if exist, return 'somedefault' if not
 
 a.[key] = a.get(key,0)+1 // add keys to dict and increment (for counting)(k+1 or 0+1)
@@ -35,19 +42,25 @@ a.[key] = a.get(key,0)+1 // add keys to dict and increment (for counting)(k+1 or
 a.setdefault('color','black') // set if not exist,nothing if exists
 
 dic.setdefault(i, []).append(movie) // sets a key and appends the list to a dict
+```
 
 ### dict merging
 
+```py
 z = {\*\*x,\*\*y} // left to right overwriting
+```
 
 ### dict pretty format
 
+```py
 import pprint
 pprint.pprint(dict)
 dict get default .get(id,default)
+```
 
 ### dict sort by value
 
+```py
 sorted(adict.items(), key=lambda x: x[1])
 
 OrderedDict(sorted(d.items(), key=lambda t: t[0])) //bykey
@@ -59,6 +72,7 @@ OrderedDict(sorted(d.items(), key=lambda t: len(t[0]))) //by key length
 for i in dic.values: i.sort() // works if dict of lists as list are mutable in place
 
 import operator -> sorted.(adict.items(), key=operator.itemgetter(1))
+```
 
 ## Functions
 
@@ -86,16 +100,20 @@ if not 'yes'.startswith(user_input.lower()):
 
 ### tuples within list
 
+```py
 for line in file_reader:
 parts = line.split(" ")
 line_tuple = (int(parts[0]), parts[1], int(parts[2]), int(parts[3]), float(parts[4]))
 results.append(line_tuple)
+```
 
 ### create list of tuples from dict
 
+```py
 x = adict.items() // short
 xxx = [(k,v) for k,v in z.items()] // list comp
 for k,v in adict.items(): x.append( (k,v) ) // long
+```
 
 ### test for type
 
@@ -183,7 +201,10 @@ lst.shape get rows cols
 a = lst < 1 // list a of all lst values less than 1
 print(a)
 print(baseball[:,1]) // print only 2nd column as [ x x x x] (horizontal)
-//matplotlib
+
+### matplotlib
+
+```py
 import matplotlib.pyplot as plt
 
 //Make a line plot: year on the x-axis, pop on the y-axis
@@ -199,20 +220,25 @@ plt.xscale('log')
 plt.xlabel() / ylable() / title() // strings for charts labels
 plt.xticks(tick_val,tick_lab) // convert axis labels. ex. [1000,2000], ['1k',...]
 plt.grid() //shows grid
+```
 
 ### Pandas
 
+```py
 import pandas as pd
 cars = pd.read_csv('cars.csv',index_col = 0)
+```
 
-### regular expressions
+### Regular Expressions
 
+```py
 import re
-re.search('^From ',x) return True or None
+re.search('^From ',x) //return True or None
 x = re.find(...,x) // returns the index of the match
-findall returns list
+findall //returns list
 re.match(..)
-print re.sub(r'([\w\.-]+)@([\w\.-]+)', r'\1@yo-yo-dyne.com', str) // searcha and replace // \1 is a variable that matches the last grouping
+print re.sub(r'([\w\.-]+)@([\w\.-]+)', r'\1@yo-yo-dyne.com', str) // searcha and replace
+// \1 is a variable that matches the last grouping
 print( sum( [ int(i) for i in re.findall('[0-9]+',open('regex_sum_42.txt').read()) ] ) ) //sum all nums in file
 x = re.compile(r'\d\d\d-\d\d\d-\d\d\d') // use compile to get re object
 //ignore case with (r'xxx',re.I)
@@ -221,9 +247,13 @@ x.search('my number is 415-555-1212') // use search method to get 1 match.
 //use findall to get list of all matches
 x.group() // prints output x.group(o) is all match, x.group(1) gives first match in parens ()
 if you use x.findall(...) without groups it returns tuples of the groups. otherwise it returns a list matches
+^(?=._(?:jpg|png))(?!._(?:lua|camera)).\*$
+//first part matches, second excludes. ?: seems optional.
+```
 
 ## XML
 
+```py
 import xml.etree.ElementTree as ET
 tree = ET.fromstring(data)
 print('Name:', tree.find('name').text)
@@ -237,17 +267,20 @@ print('Name', item.find('name').text)
 print('Id', item.find('id').text)
 print('Attribute', item.get("x"))
 counts = tree.findall('.//count') // searches from top for 'count'
+```
 
 ## URL
 
+```py
 import urllib.request, urllib.parse, urllib.error
+```
 
-## MODULES:
+## MODULES
 
+```py
 random
-
-### random.randrange(10) // 0-9 range,random.randchoice('a,b') i think.
-
+random.randrange(10) // 0-9 range,
+random.randchoice('a,b') i think.
 pyperclip // copy/paste to buffer module
 pprint // print pretty strings
 urllib // url stuff
@@ -271,21 +304,26 @@ tenths = t % 10 // these are to convert hundreths of secs ex. 9999 is actually 9
 ones = t //10 % 10
 secs = t //100 % 6
 mins = t // 600
+```
 
 ### logging
 
+```py
 import logging
 logging.basicConfig(filename = 'buh',level=logging.DEBUG, format='%(asctime)s - %(levelname)s-%(message)s') # omit filename keyword if not needed.
 logging.debug('enter msge here in your code')
 logging.disable(logging.CRITICAL) # enable to stop logging CRIT and below.
-###ERRORS
+```
+
+### ERRORS
+
+```py
 assert # for programmers errors
 raise # for user errors
 try/except
-regex:
-^(?=._(?:jpg|png))(?!._(?:lua|camera)).\*$ #first part matches, second excludes. ?: seems optional.
+```
 
-## QUESTIONS:
+## QUESTIONS
 
 defaultdict usage?
 error when set dict = {}
