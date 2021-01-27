@@ -1,5 +1,7 @@
 # C++
+
 ## Variables
+
 ```cpp
 | short (also called a short int) |  2 |  -32,767 to 32,767                                         |  N/A |
 |---------------------------------|----|------------------------------------------------------------|------|
@@ -9,31 +11,68 @@
 |  double                         |  8 |  1.7E +/- 308                                              |  15  |
 |  long double                    |  8 |  1.7E +/- 308                                              |  15  |
 |  char                           |  1 |  All ASCII characters. Can also be used as an integer type |      |
-|  bool                           |  1 |  true, false                                               |      | 
+|  bool                           |  1 |  true, false                                               |      |
 ```
+
 ### Casting/Conversion
+
 ```cpp
 double z = 33.3;
 x = (int)z; // old way, z is cast to int temporarily and assigned to x
 x = static_cast<int>(z); // new way
 
 ```
-## Preprocessor Directives
 
-### #include <iostream>
+## Common Preprocessor Directives
+
+### \<iostream\>
+
 ```cpp
-standard c libraries
+// Standard I/O libraries
+// may include <ios><streambuf><istream><ostream><iosfwd><string>
+
+cin //Standard input stream
+cout //Standard output stream
+cerr //Standard output stream for errors
+clog //Standard output stream for logging
 ```
-### #include <iomanip>
+
+### \<iomanip\>
+
 ```cpp
 setprecision(x)
-ios::fixed
+setfill(0)
 ```
-### #include <string>
- ---
-## Input/Output
+
+### \<ios\>
+
+```cpp
+// i/o base classes
+fixed,scientific //notation, fixed is normal
+showbase //0x14 etc
+noshowpoint //1.0 is 1
+dec,hex,oct // base to display
+uppercase,lowercase //duh
+left,right,internal //12..,..12,-..12
+skipws //skip whitepaces
+```
+
+### \<ostream\>
+
+```cpp
+// Standard output
+// probably included in <iostream>
+endl //insert newline and flush
+ends //insert null character
+flush //flush stream buffer
+```
+
+---
+
+## I/O
 
 ### Input
+
 ```cpp
 << //stream insertion operator
 cin 			//console input works with all datatypes
@@ -41,7 +80,9 @@ getline(cin,str)	// gets string;
 scanf
 
 ```
+
 ### Output
+
 ```cpp
 >> //stream extraction operator
 
@@ -58,11 +99,15 @@ cout << scientific << setprecision(2); //uses scientific notation
 ```
 
 ### Error
+
 ```cpp
 cerror
 ```
+
 ---
+
 ## Precedences Stuff
+
 ```cpp
 int val = x>=y>=x ? 1:0  // same as (x>=y)>=x ; left to right
 z += x < y ? x++ : y++; // x<y first, then z += (x|y), then ++; z not affected by ++;
@@ -71,6 +116,7 @@ x || y && z // && goes first. && takes precedence over ||. so x || (y&&z)
 ```
 
 ### Switch
+
 ```cpp
 switch(val)
 {
@@ -83,4 +129,14 @@ case 3:
 default:
 	cout << "if nothing matches" << endl;
 }
+```
+
+## Misc
+
+### Float Comparison
+
+```cpp
+#<iomanip>
+float1 == float2  // fails, never accurate
+float1 < float2 //works if precision isn't too many digits
 ```
