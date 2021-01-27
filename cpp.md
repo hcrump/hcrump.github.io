@@ -23,7 +23,7 @@ int values[3];			//unitialized array, must declare size,eg 3 elements
 int values[] = {1,2,3};	//initialized to values, don't need size
 int values[3] = {};		//auto initializes to [0,0,0],but need size
 int values[] {1,2,3};	//universal initialization is new. 
-static values[3]; 		//static arrays are always initialized to zeros if not explicity set.
+static int values[3]; 	//static arrays are always initialized to zeros if not explicity set.
 int nums[][3] = {		//multidimensional array
         {1,2,3},		//declare both sizes if empty. only 2nd needed if initialized
         {4,5,6}			// use for loop to populate if empty.
