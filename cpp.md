@@ -22,7 +22,7 @@ int num = 12;			//initialized int
 int values[3];			//unitialized array, must declare size,eg 3 elements
 int values[] = {1,2,3};	//initialized to values, don't need size
 int values[3] = {};		//auto initializes to [0,0,0],but need size
-int values[] {1,2,3}; 	//universal initialization is new. 
+int values[] {1,2,3};	//universal initialization is new. 
 static values[3]; 		//static arrays are always initialized to zeros if not explicity set.
 int nums[][3] = {		//multidimensional array
         {1,2,3},		//declare both sizes if empty. only 2nd needed if initialized
@@ -60,11 +60,17 @@ wchar_t wval = 'i'; 	//gives ascii code of 'i' of 105
 
 ### For Loop Misc
 ```cpp
-//to get length of array get sizeof(array) / sizeof(array type)
+//to get length of 1-D array get sizeof(array) / sizeof(array type)
 for(int i=0; i < sizeof(arr) / sizeof(int); i++){
 	cout << arr[i] << " " << flush;
 }
 
+// length of 2-D array
+for(int i=0; i < sizeof(arr) / sizeof(arr[0]); i++){
+	for int j=0; j < sizeof(arr[0]) / sizeof(int); j++){
+		cout << arr[i][j] << " " << flush;
+	}
+}
 
 ```
 
