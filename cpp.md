@@ -40,14 +40,18 @@ clog //Standard output stream for logging
 ### \<iomanip\>
 
 ```cpp
-setprecision(x)
-setfill(0)
+// Manipulate i/o
+
+setprecision(5) //set decimal precision,use ios::fixed with this
+setfill('0') //set fill character
+setw(10) //set width - for setfill()
 ```
 
 ### \<ios\>
 
 ```cpp
 // i/o base classes
+
 fixed,scientific //notation, fixed is normal
 showbase //0x14 etc
 noshowpoint //1.0 is 1
@@ -62,9 +66,19 @@ skipws //skip whitepaces
 ```cpp
 // Standard output
 // probably included in <iostream>
+
 endl //insert newline and flush
 ends //insert null character
 flush //flush stream buffer
+```
+
+### \<string\>
+
+```cpp
+// Strings classes
+// Could already be included in <iostream>
+
+add stuff as i learn
 ```
 
 ---
@@ -75,8 +89,8 @@ flush //flush stream buffer
 
 ```cpp
 << //stream insertion operator
-cin 			//console input works with all datatypes
-getline(cin,str)	// gets string;
+cin //console input works with all datatypes
+getline(cin,str) // gets string;
 scanf
 
 ```
@@ -136,7 +150,6 @@ default:
 ### Float Comparison
 
 ```cpp
-#<iomanip>
-float1 == float2  // fails, never accurate
+float1 == float2  // fails, not accurate
 float1 < float2 //works if precision isn't too many digits
 ```
