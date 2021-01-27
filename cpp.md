@@ -12,8 +12,23 @@
 |  long double                    |  8 |  1.7E +/- 308                                              |  15  |
 |  char                           |  1 |  All ASCII characters. Can also be used as an integer type |      |
 |  bool                           |  1 |  true, false                                               |      |
-```
 
+// use sizeof(var) or sizeof(int/short int/float/etc) to get size in bytes
+```
+### Variable Declaration
+```cpp
+int num;				//unitialized int
+int num = 12;			//initialized int
+int values[3];			//unitialized array, must declare size,eg 3 elements
+int values[] = {1,2,3};	//initialized to values, don't need size
+int values[3] = {};		//auto initializes to [0,0,0],but need size
+int values[] {1,2,3}; 	//universal initialization is new. 
+static values[3]; 		//static arrays are always initialized to zeros if not explicity set.
+int nums[][3] = {		//multidimensional array
+        {1,2,3},		//declare both sizes if empty. only 2nd needed if initialized
+        {4,5,6}			// use for loop to populate if empty.
+    };					
+```
 ### Casting/Conversion
 
 ```cpp
@@ -22,6 +37,37 @@ x = (int)z; // old way, z is cast to int temporarily and assigned to x
 x = static_cast<int>(z); // new way
 
 ```
+### Integer info
+
+```cpp
+INT_MAX		//2147483647
+INT_MIN		//-2147483647
+UINT_MAX	//4294967295
+```
+### Char info
+
+```cpp
+char cval = '7'; //7
+(int)cval;	//ascii code for character '7'
+sizeof(char) //1 byte
+(wchar_t)cval	//cast to ascii code number 55
+
+wchar_t wval = 'i'; 	//gives ascii code of 'i' of 105
+(char)wval;		//recast to 'i'
+```
+
+## Loops
+
+### For Loop Misc
+```cpp
+//to get length of array get sizeof(array) / sizeof(array type)
+for(int i=0; i < sizeof(arr) / sizeof(int); i++){
+	cout << arr[i] << " " << flush;
+}
+
+
+```
+
 
 ## Common Preprocessor Directives
 
