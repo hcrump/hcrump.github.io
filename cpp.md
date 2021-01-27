@@ -74,6 +74,14 @@ for(int i=0; i < sizeof(arr) / sizeof(arr[0]); i++){
 
 ```
 
+## Functions
+
+### Function info
+```cpp
+//functions must be declared prior to use, so before main()
+
+```
+
 
 ## Common Preprocessor Directives
 
