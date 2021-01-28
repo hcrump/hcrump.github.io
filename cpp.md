@@ -78,7 +78,8 @@ for(int i=0; i < sizeof(arr) / sizeof(arr[0]); i++){
 
 ### Function info
 ```cpp
-//functions must be declared prior to use, so before main()
+//functions must be declared prior to use. 
+//Can declare prototype at top or put function before called.
 
 ```
 

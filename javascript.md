@@ -450,6 +450,9 @@ letters.forEach(letter => {
 
 //comma operator, tries to increment and if fail, then assign 1,return prev
 let occ = arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
+
+// wut? need to test this
+letters.forEach(function(a) { this[a] ? this[a]++ : this[a] = 1 }.bind(result = {}))
 ```
 
 ## TOOLS
