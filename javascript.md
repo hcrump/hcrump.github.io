@@ -55,22 +55,22 @@ if(str.replace(/\s/g,"")== "") // slow
 ### String to Integer
 
 ```js
-+str; 			//unary. my favorite.
++str; //unary. my favorite.
 Number(str);
-Math.floor(str);// Good but incorrect on negative division. 3 / -2 = -2, use Math.trunc()
-~~str; 			// new math.floor
-parseInt(str); 	//slowest
+Math.floor(str); // Good but incorrect on negative division. 3 / -2 = -2, use Math.trunc()
+~~str; // new math.floor
+parseInt(str); //slowest
 str * 1;
 ```
 
 ### Integer to String
 
 ```js
-String(n); 		// Most clear. Works with null and undef
-n.toString(); 	// fails on null or undef
-"" + n; 		// Simple. Just a concat
-n + ""; 		//same as above
-`${n}`; 		// Unclear, but template string seems fast
+String(n); // Most clear. Works with null and undef
+n.toString(); // fails on null or undef
+"" + n; // Simple. Just a concat
+n + ""; //same as above
+`${n}`; // Unclear, but template string seems fast
 ```
 
 ### String Methods
@@ -86,19 +86,23 @@ n + ""; 		//same as above
 ### Array Misc
 
 ##### create
+
 ```js
 Array.from  // check
 let arr = [];
 let arr = new Array(); // check if length needed in ()
 let ar2 = [...arr] // need brackets or it will point to same memory
 let arr = Array.of();//check
-let arr = [].concat(arr2); 
+let arr = [].concat(arr2);
 let arr = anything that returns an array //Object.keys/values and map/reduce/filter ,etc
 ```
+
 ##### other
+
 ```js
-arr.fill // initialize
+arr.fill; // initialize
 ```
+
 ##### Array to String
 
 ```js
@@ -169,37 +173,47 @@ if(arr.every(x => x === 0))
 let newarr = arr.sort(); //alphabetical sort
 let newarr = arr.sort((a, b) => a - b); //numeric sort
 ```
+
 ### Array Notes
+
 ```js
 foreach vs map: map returns an array,fast,chainable: foreach can mutate existing array, slow,not chainable.
 ```
+
 ---
 
 ## Objects
 
 ### Object Misc
+
 ```js
 let obj = {};
-let obj = new Object;
-
-
+let obj = new Object();
+Object.assign(obj1, ...objects); //copies or overwrites
 ```
+
 ### Object Manipulation
+
 ```js
-Object.fromEntries //creates an object out of pairs, eg. a Map
-Object.keys() //gets keys duh
-Object.values() //gets values (optional index)
-Object.entries()//gets key and value (optional index)
+Object.fromEntries; //creates an object out of pairs, eg. a Map
+Object.keys(); //gets keys duh
+Object.values(); //gets values (optional index)
+Object.entries(); //gets key and value (optional index)
 ```
+
 ### Object Loops
+
 ##### Object.values
+
 ```js
 // gives the index (not the same as a numbered key!!)
 Object.values(obj).forEach((val, i) => {
 	console.log(i, val, typeof val);
 });
 ```
+
 ##### Object.entries
+
 ```js
 //can use index,key,value
 Object.entries(obj).forEach(([key, val], i) => {
@@ -211,7 +225,7 @@ for (let [i, [key, val]] of Object.entries(Object.entries(obj))) {
 	console.log(i, key, val);
 }
 
-// object of arrays 
+// object of arrays
 Object.entries(obj).forEach(([key, val]) => {
 	val.forEach(x => {
 		console.log(key, x);
@@ -224,6 +238,7 @@ Object.entries(obj).map(([key, val]) => {
 	val.map(x => (expected[x.toLowerCase()] = +key));
 });
 ```
+
 ### Object Misc
 
 ```js
@@ -235,26 +250,49 @@ using Object.entries  etc is better than for...of except for speed.
 
 ---
 
+## Map Object
+
+### Map Usage
+
+```js
+// a better map than using regular object
+let myMap = new Map()
+myMap.set('string',value);
+myMap.set(object,value);
+myMap.set(function,value);
+myMap.get('string');
+myMap.keys();
+myMap.values();
+myMap.entries();
+
+//simple for..of loop
+for(let [key,value] of myMap.entries()){
+	console.log(key,value);
+}
+
+```
+
+---
+
 ## Functions
 
 ### Function Misc
-
-
 
 ### Random Interesting Snippets
 
 ```js
 export const iterate = (object, func) => {
-  const entries = Object.entries(object).map(([key, value]) =>
-    Array.isArray(value)
-      ? [key, value.map(e => iterate(e, func))]
-      : typeof value === 'object'
-      ? [key, iterate(value, func)]
-      : [key, func(value)]
-  );
-  return Object.fromEntries(entries);
+	const entries = Object.entries(object).map(([key, value]) =>
+		Array.isArray(value)
+			? [key, value.map(e => iterate(e, func))]
+			: typeof value === "object"
+			? [key, iterate(value, func)]
+			: [key, func(value)]
+	);
+	return Object.fromEntries(entries);
 };
 ```
+
 ```js
 
 ```
@@ -307,7 +345,7 @@ class Clock {
 	}
 }
 
-let myClock = new Clock(50,22);
+let myClock = new Clock(50, 22);
 ```
 
 ---
@@ -329,6 +367,7 @@ const gigasecond = date => {
 ```
 
 ## Time
+
 ```js
 this.minutes = (60 + (minutes % 60)) % 60; // calc the minute hand. pos/neg values work. ex. -90mins would be on 30.
 this.hours = (24 + ((hours + Math.floor(minutes / 60)) % 24)) % 24; // calc the hour hand +- vals work
@@ -350,10 +389,9 @@ isNaN // fails on "number" ex. "90". thinks it's a number
 ### Formatting
 
 ```js
-parseFloat(num.toFixed(1)) // number changed to 1 significant digit as string, back to float.
-num.toPrecision(2) // how many places to the right of the decimal place to show, eg. 10.02
-str.padStart(2,'0') // makes a 2 digit number and puts a zero if one digit, eg. 1 is 01, 9 is 09, 10 is still 10
-
+parseFloat(num.toFixed(1)); // number changed to 1 significant digit as string, back to float.
+num.toPrecision(2); // how many places to the right of the decimal place to show, eg. 10.02
+str.padStart(2, "0"); // makes a 2 digit number and puts a zero if one digit, eg. 1 is 01, 9 is 09, 10 is still 10
 ```
 
 ### Errors
@@ -361,16 +399,19 @@ str.padStart(2,'0') // makes a 2 digit number and puts a zero if one digit, eg. 
 ```js
 throw new Error("Invalid bullshit!");
 ```
+
 ### Flooring
+
 ```js
-let num = 3.14  // want 3
-Math.floor(num) // standard but slow
-~~num   		// bitwise NOT
-num | 0			// bitwise OR
-num << 0		// bitwise Shift
-num >> 0		// bitwise Shift
-num >>> 0		// triple bitwise Shift
+let num = 3.14; // want 3
+Math.floor(num); // standard but slow
+~~num; // bitwise NOT
+num | 0; // bitwise OR
+num << 0; // bitwise Shift
+num >> 0; // bitwise Shift
+num >>> 0; // triple bitwise Shift
 ```
+
 ---
 
 ## TOPICS to clarify
@@ -379,3 +420,43 @@ num >>> 0		// triple bitwise Shift
 optional chaining operator
 ```
 
+## CODE SNIPPETS
+
+### Count occurances in array
+
+```js
+let letters = ["a", "b", "c", "c", "d", "d", "a"];
+//simple reduce
+let occ = letters.reduce((result, value) => {
+	if (!result[value]) {
+		result[value] = 0;
+	}
+	result[value]++;
+	return result;
+}, {});
+
+// new Map and ??(null coalesce operator)
+let occ = letters.reduce(
+	(result, value) => result.set(value, (result.get(value) ?? 0) + 1),
+	new Map()
+);
+
+// foreach approach
+const result = {};
+letters.forEach(letter => {
+	if (!(letter in result)) result[letter] = 0;
+	result[letter] = result[letter] + 1;
+});
+
+//comma operator, tries to increment and if fail, then assign 1,return prev
+let occ = arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
+```
+
+## TOOLS
+
+### Online tools
+
+```js
+repl.it; //running code snippets
+jsperf; // performance testing
+```
