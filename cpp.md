@@ -56,10 +56,21 @@ wchar_t wval = 'i'; 	//gives ascii code of 'i' of 105
 (char)wval;		//recast to 'i'
 ```
 
+### Strings
+```cpp
+s.at(i) //same as s[i] but it checks for out of bounds. safer than operator[i]
+getline(cin,s) //like cin >> s, but will read up to newline. 
+cin >> s //only gets a word
+isupper(s.at(i)) // true/false
+
+```
 ## Loops
 
 ### For Loop Misc
 ```cpp
+//reverse loop
+for(int i=str.length()-1;i >= 0; i--)...
+
 //to get length of 1-D array get sizeof(array) / sizeof(array type)
 for(int i=0; i < sizeof(arr) / sizeof(int); i++){
 	cout << arr[i] << " " << flush;
