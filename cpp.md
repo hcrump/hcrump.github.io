@@ -27,7 +27,10 @@ static int values[3]; 	//static arrays are always initialized to zeros if not ex
 int nums[][3] = {		//multidimensional array
         {1,2,3},		//declare both sizes if empty. only 2nd needed if initialized
         {4,5,6}			// use for loop to populate if empty.
-    };					
+    };		
+string s("a;lksdjalksjflkasdfk");	//different way to assign string
+
+
 ```
 ### Casting/Conversion
 
@@ -62,7 +65,8 @@ s.at(i) //same as s[i] but it checks for out of bounds. safer than operator[i]
 getline(cin,s) //like cin >> s, but will read up to newline. 
 cin >> s //only gets a word
 isupper(s.at(i)) // true/false
-
+s.insert(0,1,s[i]) //insert char at pos 0; 
+num = static_cast<int>(s.at(i)); //get ascii of string character
 ```
 ## Loops
 
@@ -139,8 +143,8 @@ skipws //skip whitepaces
 // Standard output
 // probably included in <iostream>
 
-endl //insert newline and flush
-ends //insert null character
+endl //insert newline and flushes buffer
+ends //insert null character, does not flush
 flush //flush stream buffer
 ```
 
@@ -149,10 +153,32 @@ flush //flush stream buffer
 ```cpp
 // Strings classes
 // Could already be included in <iostream>
-
+insert
+at
 add stuff as i learn
 ```
 
+### \<algorithm\>
+So many cool things here
+```cpp
+all_of, any_of, none_of //bool check
+for_each
+count_if
+generate //like js map?
+shuffle // also make sure to use mersenne twister random generator
+merge // merge collections
+minmax // min and max of 2 numbers
+minmax_element // min max of collections
+accumulate // similar to js reduce?
+sort
+reverse //in place reverse,not returning collection
+//lots more
+```
+
+### \<ctime\>
+```cpp
+time(unsigned int)
+```
 ---
 
 ## I/O
@@ -161,7 +187,9 @@ add stuff as i learn
 
 ```cpp
 << //stream insertion operator
-cin //console input works with all datatypes
+cin //stream input, clears cout buffer before use
+cin.clear() // if cin.fail state, cin won't take input, may cause endless loops
+cin.ignore() // after clear, read up on this
 getline(cin,str) // gets string;
 scanf
 
@@ -171,8 +199,7 @@ scanf
 
 ```cpp
 >> //stream extraction operator
-
-cout //console output
+cout //stream output buffer,use endl or fflush or cin to flush
 printf
 
 cout << hex << 16 << endl; //changes output to hex
@@ -217,6 +244,12 @@ default:
 }
 ```
 
+## Classes
+```cpp
+
+
+
+```
 ## Misc
 
 ### Float Comparison
@@ -224,4 +257,13 @@ default:
 ```cpp
 float1 == float2  // fails, not accurate
 float1 < float2 //works if precision isn't too many digits
+```
+
+### Random
+```cpp
+srand(static_cast<unsigned int>(time(0)));  //seed rand with time. requires ctime
+int r = rand(); //16 bit 0-32767
+int rRange = rand() % 101; //0-100
+int rRange2 = rand() % 100 + 1; //1-100 ((0-99)+1)
+int someNumber = rand() % ((max - min) + 1) + min; //(25,10) is 0-15 + min. so, 10-25
 ```
