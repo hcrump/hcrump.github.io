@@ -87,6 +87,14 @@ for(int i=0; i < sizeof(arr) / sizeof(arr[0]); i++){
 	}
 }
 
+//loop through string
+string s = "a09A!";
+char c;
+int i = 0;
+while (( c = s.at(i++)) != '!')
+{
+	cout << c << ":"<< (int)c << endl;
+}
 ```
 
 ## Functions
