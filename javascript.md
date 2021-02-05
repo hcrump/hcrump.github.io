@@ -144,7 +144,7 @@ const [a,b,...arr] = [1,2,3,4,5] // arr = [3,4,5], neat way to slice.
 ```js
 // copies from array
 // slice(from index, until index but not including)
-// Returns new array of deleted entries; Original IS NOT unaltered.
+// Returns new array of deleted entries; Original IS NOT altered.
 
 x=[0,1,2,3,4]
 let newarr = x.slice(1,4);
@@ -460,6 +460,44 @@ makeServerRequest.catch(error => {
   console.log(error);
 });
 ```
+---
+## Regular Expressions (Regex)
+
+### Regex Methods
+
+##### test method
+```js
+// returns true or false
+// form: regex(string)
+let myString = "Hello, World!";
+let myRegex = /Hello/;
+myRegex.test(myString); // returns true/false
+/dog|cat|bird|fish/ // OR match
+/something/i // caseless
+```
+##### match method
+```js
+// match and returns the match
+// form: string(regex)  
+'string'.match(/regex/); // use variable string as well.
+
+```
+
+### Flags/Symbols
+```js
+/asdfdas/i 	//case insentive
+/asdfasd/g 	//global. multiple matches.
+/.un/		//dot wildcard matches anything (sun,bun,tun,wun,etc)
+/[aeiou]/	//brackets, match any separate letter of a,e,i,o,u.
+/[a-zA-Z]/g //match a-z and A-Z
+/[a-z]/ig	//same i think
+/[^a-z0-9]/ig //anything but letters and numbers.
+/a+/g		//one or more a's match
+/Aa*/g		//matchs any A or Aa or Aaaa,etc
+/<.*?>/		//lazy match, finds the smallest <h1>asdf</h1> would be <h1>,not entire thing
+/^Cal/		//matches beginning of string starting with Cal
+```
+
 ---
 
 ## Dates
