@@ -482,7 +482,13 @@ myRegex.test(myString); // returns true/false
 'string'.match(/regex/); // use variable string as well.
 
 ```
+##### replace
+```js
+// regex can be a variable, replaceval can be a string "$2 $1"
+'string'.replace(regex,replaceval)
+"Code Camp".replace(/(\w+)\s(\w+)/, '$2 $1'); //swaps
 
+```
 ### Flags/Symbols
 ```js
 /asdfdas/i 	//case insentive
@@ -496,6 +502,21 @@ myRegex.test(myString); // returns true/false
 /Aa*/g		//matchs any A or Aa or Aaaa,etc
 /<.*?>/		//lazy match, finds the smallest <h1>asdf</h1> would be <h1>,not entire thing
 /^Cal/		//matches beginning of string starting with Cal
+/asdf$/		//matches asdf at end of line
+/\w+/		//closest to matching alphabet same as /[A-Za-z0-9_]+/
+/\W/		//opposite of \w. 
+/\d/		// 0-9 digits\
+/\D/		// non digits
+/\s/		// white space
+/\S/		// nonwhite space
+/a{3,5}/	// matches any 3-5 a's. aaa,aaaa,aaaaa
+/a{3,}/		// matches 3 or more a's*$/
+/a{,3}/		// matches 0 to 3 a's
+/a{3}/		// matches exactly 3 a's
+/favou?rite/ //? matches 0 or 1
+(?=\w{3,5})(?=\D*\d) //positive look ahead 3-5characters and ends with digit
+(?!\w{3,5}) //negative look ahead not 3-5 characters
+/(\w+)\s\1/	//capture group 1 is \1, same as in parenthesis.
 ```
 
 ---
