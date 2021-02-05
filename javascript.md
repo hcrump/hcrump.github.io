@@ -495,9 +495,9 @@ myRegex.test(myString); // returns true/false
 /asdfasd/g 	//global. multiple matches.
 /.un/		//dot wildcard matches anything (sun,bun,tun,wun,etc)
 /[aeiou]/	//brackets, match any separate letter of a,e,i,o,u.
-/[a-zA-Z]/g //match a-z and A-Z
+/[a-zA-Z]/g 	//match a-z and A-Z
 /[a-z]/ig	//same i think
-/[^a-z0-9]/ig //anything but letters and numbers.
+/[^a-z0-9]/ig 	//anything but letters and numbers.
 /a+/g		//one or more a's match
 /Aa*/g		//matchs any A or Aa or Aaaa,etc
 /<.*?>/		//lazy match, finds the smallest <h1>asdf</h1> would be <h1>,not entire thing
@@ -513,9 +513,9 @@ myRegex.test(myString); // returns true/false
 /a{3,}/		// matches 3 or more a's*$/
 /a{,3}/		// matches 0 to 3 a's
 /a{3}/		// matches exactly 3 a's
-/favou?rite/ //? matches 0 or 1
+/favou?rite/ 	//? matches 0 or 1
 (?=\w{3,5})(?=\D*\d) //positive look ahead 3-5characters and ends with digit
-(?!\w{3,5}) //negative look ahead not 3-5 characters
+(?!\w{3,5}) 	//negative look ahead not 3-5 characters
 /(\w+)\s\1/	//capture group 1 is \1, same as in parenthesis.
 ```
 
