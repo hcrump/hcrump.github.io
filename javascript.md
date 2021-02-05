@@ -365,6 +365,40 @@ function eatFruit (fruit='strawberry') {
 ```
 
 ---
+### Recursion
+
+```js
+//basic function to create array large to small
+function countdown(n) {
+	let arr = [];
+	for (var i = 1; i <= n; i++) {
+		arr = arr.unshift(i);
+	}
+	return arr;
+}
+
+// recursive options
+
+function countdown(n) {
+  if (n < 1) {
+    return [];
+  } else {
+    const arr = countdown(n - 1);
+    arr.unshift(n);
+    return arr;
+  }
+}
+
+function countdown(n){
+   return n < 1 ? [] : [n].concat(countdown(n - 1));
+}
+
+function countdown(n){
+   return n < 1 ? [] : [n, ...countdown(n - 1)];
+}
+```
+
+---
 
 ## Classes
 
@@ -399,7 +433,33 @@ class Clock {
 
 let myClock = new Clock(50, 22);
 ```
+---
+## Async Stuff
 
+### Promise
+```js
+// 3 states: pending,fulfilled, rejected
+
+const makeServerRequest = new Promise((resolve, reject) => {
+	// responseFromServer represents a response from a server
+	let responseFromServer;
+    
+	if(responseFromServer) {
+		resolve("We got the data");
+	} else {  
+		reject("Data not received");
+	}
+});
+
+//then comes from result of the resolve method.
+makeServerRequest.then(result => {
+  console.log(result);
+})
+
+makeServerRequest.catch(error => {
+  console.log(error);
+});
+```
 ---
 
 ## Dates
@@ -464,6 +524,36 @@ num >> 0; // bitwise Shift
 num >>> 0; // triple bitwise Shift
 ```
 
+---
+## Modules
+
+### Script
+```js
+// may need to enable type module, not sure
+<script type="module" src="aasdf.js">
+```
+### Export
+```js
+// do this at end of script with functions
+
+//named export
+export {function1, function2 }; // allows importing of functions.
+
+//default export - can only be one. can't use with let,var,const
+export default function sum(x,y){ return x + y;} //named function
+export default function(x,y) { return x + y;}  //anonymous function
+```
+### Import
+```js
+// do this at start of document
+
+//name imports
+import {function1, function2 } from "./blah_functions.js" ; // allows importing of functions.
+import * as myFunctions from "./my_functions.js";
+
+//default imports
+import blah from "./blah_functions.js"; //blah is a variable that gets the default.can be named anything.
+```
 ---
 
 ## TOPICS to clarify
