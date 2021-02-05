@@ -28,6 +28,7 @@ let [a, b, c] = [1, 2, 3]; //all at once
 ```js
 string.split("").reverse().join(""); //reverse string
 string.repeat(x); //repeat string x times
+string.slice(from,until); // like array slice.
 ```
 
 ### String to Array
@@ -75,8 +76,15 @@ n + ""; //same as above
 
 ### String Methods
 
+##### split
 ```js
-
+// splits string into array
+split(separator,[how many to split]);
+str = "1,2,34-34";
+str.split(); // ["1,2,34-34"]
+str.split("-"); // ["1,2,34", "34"]
+str.split(""); //["1", ",", "2", ",", "3", "4", "-", "3", "4"] 
+str.split("",2); //["1", ","]
 ```
 
 ---
@@ -122,13 +130,43 @@ let arrcopy = [...arr]; // this is a copy, not a reference
 ### Add/Del Elements
 
 ```js
-push/pop, unshift/shift // end, front
-slice(idx) // removes,no alter orig, ret sliced as arr
-splice(idx,howmany) // removes, alters orig, ret sliced as arr
+push/pop : unshift/shift // push onto/pop off of end : unshift onto/shift off of front
+slice(from index, until index(not inclusive)) //(0,3) slices 0,1,2 out. doesn't alter original, return array of sliced.
+splice(idx,[howmany]) // (0,2) splices 0,1 out. (0) is 0 to end. alters original, returns array of sliced.
 arr.indexOf(item) then splice // remove by value
+const [a,b,...arr] = [1,2,3,4,5] // arr = [3,4,5], neat way to slice.
 ```
 
 ### Array Methods
+
+##### slice
+
+```js
+// copies from array
+// slice(from index, until index but not including)
+// Returns new array of deleted entries; Original IS NOT unaltered.
+
+x=[0,1,2,3,4]
+let newarr = x.slice(1,4);
+//newarr = [1,2,3], x is unchanged
+```
+##### splice
+
+```js
+// deletes and inserts array
+// splice(from index, how many to splice, insert1,insert2,...)
+// Returns new array of deleted entries; Original IS altered!
+
+// deletes
+x=[0,1,2,3,4]
+let newarr = x.splice(1,4);
+//newarr = [1,2,3,4], x = [0]
+
+// inserts - uses parameters 3-5
+x=[0,1,2,3,4]
+let newarr = x.splice(1,0,'a','b'); //start at index 0, delete 0 elements, insert a and b
+//newarr = [], x = [0,'a','b',1,2,3,4] //returns only deleted elements, so an empty array
+```
 
 ##### map
 
@@ -199,6 +237,7 @@ Object.fromEntries; //creates an object out of pairs, eg. a Map
 Object.keys(); //gets keys duh
 Object.values(); //gets values (optional index)
 Object.entries(); //gets key and value (optional index)
+Object.freeze(obj); //make obj immutable.
 ```
 
 ### Object Loops
@@ -238,7 +277,20 @@ Object.entries(obj).map(([key, val]) => {
 	val.map(x => (expected[x.toLowerCase()] = +key));
 });
 ```
+### Object Destructuring
+```js
+const user = {
+	bob: {
+		age: 22,
+		haircolor: "brown"
+	}
+};
+const {bob: { age,haircolor}} = user; //copies object vars to new vars of the same name
+const {bob: { age : newAge, haircolor:newHairColor }} = user; //copies to different variable names
 
+
+
+```
 ### Object Misc
 
 ```js
