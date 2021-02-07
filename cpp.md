@@ -274,4 +274,5 @@ int r = rand(); //16 bit 0-32767
 int rRange = rand() % 101; //0-100
 int rRange2 = rand() % 100 + 1; //1-100 ((0-99)+1)
 int someNumber = rand() % ((max - min) + 1) + min; //(25,10) is 0-15 + min. so, 10-25
+'A' + rand() % 26 // random uppercase letter
 ```
