@@ -101,8 +101,9 @@ while (( c = s.at(i++)) != '!')
 
 ### Function info
 ```cpp
-//functions must be declared prior to use. 
-//Can declare prototype at top or put function before called.
+
+void someFunction(int, double); //functions prototype must be declared prior to use. param name optional
+
 
 ```
 
@@ -162,7 +163,10 @@ flush //flush stream buffer
 // Strings classes
 // Could already be included in <iostream>
 insert
-at
+at(index)	//gets character at index
+stoi(str)	//string to int
+stod(str) 	// string to whole number
+stof(str)	// string to float
 add stuff as i learn
 ```
 
@@ -186,6 +190,25 @@ reverse //in place reverse,not returning collection
 ### \<ctime\>
 ```cpp
 time(unsigned int)
+```
+
+### \<sstream\>
+```cpp
+// allowes concat of string and int?
+```
+
+### \<ctype\>
+```cpp
+isdigit(ch)	//is character 0-9
+isalpha(ch)	//is character alphabet	
+isalnum(ch)	//is character alphanumeric
+islower()
+isupper()
+tolower()
+toupper()
+isblank()
+isspace()
+etc
 ```
 ---
 
