@@ -29,16 +29,18 @@ int nums[][3] = {		//multidimensional array
         {4,5,6}			// use for loop to populate if empty.
     };		
 string s("a;lksdjalksjflkasdfk");	//different way to assign string
-
+bigger = a > b ? a : b; //ternary
+bigger = a > b ? (smaller = b, a) : (smaller = a, b); //double assign ternary,comma operator
 
 ```
 ### Casting/Conversion
 
 ```cpp
 double z = 33.3;
+int x = somechar // some things are implicit and don't need casts
 x = (int)z; // old way, z is cast to int temporarily and assigned to x
 x = static_cast<int>(z); // new way
-
+typeid(x).name(); // checks type
 ```
 ### Integer info
 
