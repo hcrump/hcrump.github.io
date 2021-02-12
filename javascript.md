@@ -173,6 +173,15 @@ let newarr = x.splice(1,0,'a','b'); //start at index 0, delete 0 elements, inser
 ```js
 let newarr = arr.map(x => x * 2);
 //returns same length array.
+
+//pull title/rating from array of objects, return object
+ratings = watchList.map(x => ({
+  "title": x.Title,
+  "rating": x.imdbRating
+  })
+);
+// same, but uses destructuring
+ratings = watchList.map(({ Title: title, imdbRating: rating }) => ({title, rating}));
 ```
 
 ##### filter

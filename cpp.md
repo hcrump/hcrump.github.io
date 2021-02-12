@@ -105,7 +105,7 @@ while (( c = s.at(i++)) != '!')
 ```cpp
 
 void someFunction(int, double); //functions prototype must be declared prior to use. param name optional
-
+int someFunction(string s, int &num); // pass by reference num.
 
 ```
 
