@@ -18,7 +18,25 @@ let a = []; //array
 let a = {}; //object
 let [a, b, c] = [1, 2, 3]; //all at once
 ```
+### Parameter 
+```js
+function buh(arr){...} // example function
+buh([1,2,3],1,2);	//example call
 
+**// how to get arguments from args parameter**
+
+//old way
+var args = Array.prototype.slice.call(arguments);
+var args = [].slice.call(arguments);
+
+//new way
+let args = Array.from(arguments); // [[1,2,3],1,2]
+let args = Array.from(arguments).slice(1); // [1,2]
+
+//newer way - use spread syntax in function parameter
+function buh(...arr){...}
+let args = [...arr].slice(1);
+```
 ---
 
 ## Strings
@@ -85,6 +103,8 @@ str.split(); // ["1,2,34-34"]
 str.split("-"); // ["1,2,34", "34"]
 str.split(""); //["1", ",", "2", ",", "3", "4", "-", "3", "4"] 
 str.split("",2); //["1", ","]
+str.split(/[^a-z]/ig) // split on non letters (i.e. get words only)
+let x = title.trim().toLowerCase().split(/[^a-z]+/ig).join("-"); //" BUH buh" is "buh-buh"
 ```
 
 ---
@@ -126,6 +146,7 @@ arr2 = [4, 5, 6];
 let merged = [0, ...ar, 2, ...ar2];
 let arrcopy = [...arr]; // this is a copy, not a reference
 newarr = arr.slice()// test if this works to slice entire array for copy
+newarr = arr1.concat(arr2); //merges into newarr, originals not altered
 ```
 
 ### Add/Del Elements
@@ -198,17 +219,21 @@ filteredList = watchList
 ##### filter
 
 ```js
+//returns an array of values that pass the conditional
 let x = arr.filter((value, index) => {
 	value >= 25;
 });
-//returns an array of values that pass the conditional
+
 ```
 
 ##### reduce
 
 ```js
-let val = arr.reduce((a, b) => a + b);
+// Returns single value,array,object
+// reduce(accumulator,current,index,array)
+
 //returns sum of array values
+let val = arr.reduce((a, b) => a + b);
 
 //filter-map-reduce chain to get average.
 let count;
@@ -234,13 +259,16 @@ if(arr.some(x => x === 0))
 ##### every
 
 ```js
-if(arr.every(x => x === 0))
 //returns true if all elements are true
+if(arr.every(x => x === 0))
+
 ```
 
 ##### sort
 
 ```js
+// **SORT MODIFIES ORIGINAL !!**
+
 //alphabetical sort
 let newarr = arr.sort(); 
 
@@ -252,7 +280,9 @@ let x = arr.sort((a,b) => {
 //numeric sort
 let newarr = arr.sort((a, b) => a - b); 
 
-
+// NON-MUTATING sort versions slice/concat
+let newarr = [].concat(arr).sort();
+let newarr =  arr.slice().sort((a,b) => a-b);
 ```
 
 ### Array Notes
@@ -388,8 +418,18 @@ export const iterate = (object, func) => {
 };
 ```
 
+### Curried Functions
 ```js
+//
+curried = x => y => x + y;
+curried(1,2) // 3
 
+//same as 
+func curried(x){
+	return function(y){
+		return x+y;
+	}
+}
 ```
 
 ### Function Defaults Parameters
@@ -438,6 +478,14 @@ function countdown(n){
 
 function countdown(n){
    return n < 1 ? [] : [n, ...countdown(n - 1)];
+}
+
+//sum a to b
+function sumAll(arr) {
+  let first = arr[0];
+  let last = arr[1];
+  let step = first < last ? 1 : -1;
+  return first == last ? first : first + sumAll([first + step,last]);
 }
 ```
 
@@ -697,6 +745,42 @@ let occ = arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {
 
 // wut? need to test this
 letters.forEach(function(a) { this[a] ? this[a]++ : this[a] = 1 }.bind(result = {}))
+```
+### Diff array
+```js
+// only in one, not both
+function diffArray(arr1, arr2) {
+
+  let newArr = arr1.concat(arr2).filter(x => {
+    return !arr1.includes(x) || !arr2.includes(x) ;
+  })
+  return newArr;
+}
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]); // [4]
+
+```
+### Sum between [a,b]
+```js
+// sum of all numbers between a and b
+function sumAll(arr) {
+  var sum = 0;
+  for (var i = Math.min(...arr); i <= Math.max(...arr); i++) {
+    sum += i;
+  }
+  return sum;
+}
+sumAll([1, 4]); //10
+```
+### Destroyer
+```js
+// remove elements of arr based on other parameters
+function destroyer(arr) {
+  let args = Array.from(arguments).slice(1);
+  return arr.filter(x => {
+    return !args.includes(x);
+  })
+}
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 ```
 
 ## TOOLS
