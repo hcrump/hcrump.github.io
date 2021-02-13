@@ -125,6 +125,7 @@ arr = [3, 4, 5];
 arr2 = [4, 5, 6];
 let merged = [0, ...ar, 2, ...ar2];
 let arrcopy = [...arr]; // this is a copy, not a reference
+newarr = arr.slice()// test if this works to slice entire array for copy
 ```
 
 ### Add/Del Elements
@@ -176,12 +177,22 @@ let newarr = arr.map(x => x * 2);
 
 //pull title/rating from array of objects, return object
 ratings = watchList.map(x => ({
-  "title": x.Title,
-  "rating": x.imdbRating
+  title: x.Title,
+  rating: x.imdbRating
   })
 );
+
 // same, but uses destructuring
 ratings = watchList.map(({ Title: title, imdbRating: rating }) => ({title, rating}));
+
+// chaining map/filter notice use of {return{}} instead of {({})}, both work
+filteredList = watchList
+.filter(x => x.imdbRating >=8.0)
+.map(x => {
+  return {
+  title:x.Title,
+  rating:x.imdbRating
+}})
 ```
 
 ##### filter
@@ -198,6 +209,19 @@ let x = arr.filter((value, index) => {
 ```js
 let val = arr.reduce((a, b) => a + b);
 //returns sum of array values
+
+//filter-map-reduce chain to get average.
+let count;
+averageRating = watchList
+	.filter(x => x.Director == "Christopher Nolan")
+	.map(x => Number(x.imdbRating))
+	.reduce((sum,x,i) => {
+		sum += x;
+		count = i + 1;
+		return sum;
+	}) / count;
+return averageRating;
+}
 ```
 
 ##### some
@@ -217,8 +241,18 @@ if(arr.every(x => x === 0))
 ##### sort
 
 ```js
-let newarr = arr.sort(); //alphabetical sort
-let newarr = arr.sort((a, b) => a - b); //numeric sort
+//alphabetical sort
+let newarr = arr.sort(); 
+
+// reverse alphabetic sort
+let x = arr.sort((a,b) => {
+  return a==b ? 0 : a<b ? 1:-1;
+});
+
+//numeric sort
+let newarr = arr.sort((a, b) => a - b); 
+
+
 ```
 
 ### Array Notes
