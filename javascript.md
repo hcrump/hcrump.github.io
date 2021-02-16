@@ -106,7 +106,20 @@ str.split("",2); //["1", ","]
 str.split(/[^a-z]/ig) // split on non letters (i.e. get words only)
 let x = title.trim().toLowerCase().split(/[^a-z]+/ig).join("-"); //" BUH buh" is "buh-buh"
 ```
+### Replace 
+Also check regex section
+```js
+// replace and keep capitalization
+str = str
+.replace(before,before[0] == before[0].toLowerCase()
+?after.toLowerCase()
+:after[0].toUpperCase() + after.slice(1));
 
+// piglatin
+str = str
+.replace(/(^[aeiou].*)/,'$1way')  //startwith vowel, add way at end
+.replace(/(^[^aeiou]+)(.*)/,'$2$1ay'); //else leading consanants to end + 'ay'
+```
 ---
 
 ## Arrays
@@ -610,6 +623,13 @@ myRegex.test(myString); // returns true/false
 /(\w+)\s\1/	//capture group 1 is \1, same as in parenthesis.
 ```
 
+### regex func
+```js
+// split words and put '-' between, then lowercase.
+str.split(/[^a-zA-Z]|(?=[A-Z])/).join('-').toLowerCase();
+//"Teletubbies say Eh-oh" is "teletubbies-say-eh-oh".
+//"AllThe-small Things" is "all-the-small-things".
+``
 ---
 
 ## Dates
@@ -783,6 +803,20 @@ function destroyer(arr) {
 destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 ```
 
+### Match object based properties and values
+```js
+function whatIsInAName(collection, source) {
+  var srcKeys = Object.keys(source);
+
+  return collection.filter(function(obj) {
+    return srcKeys.every(function(key) {
+      return obj.hasOwnProperty(key) && obj[key] === source[key];
+    });
+  });
+}
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+```
+
 ## TOOLS
 
 ### Online tools
@@ -790,4 +824,5 @@ destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 ```js
 repl.it; //running code snippets
 jsperf; // performance testing
+https://regexr.com/ // regex testing
 ```
