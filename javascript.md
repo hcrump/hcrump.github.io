@@ -623,13 +623,13 @@ myRegex.test(myString); // returns true/false
 /(\w+)\s\1/	//capture group 1 is \1, same as in parenthesis.
 ```
 
-### regex func
+### Regex examples
 ```js
 // split words and put '-' between, then lowercase.
 str.split(/[^a-zA-Z]|(?=[A-Z])/).join('-').toLowerCase();
 //"Teletubbies say Eh-oh" is "teletubbies-say-eh-oh".
 //"AllThe-small Things" is "all-the-small-things".
-``
+```
 ---
 
 ## Dates
