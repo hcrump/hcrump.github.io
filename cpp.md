@@ -15,24 +15,27 @@
 
 // use sizeof(var) or sizeof(int/short int/float/etc) to get size in bytes
 ```
+
 ### Variable Declaration
+
 ```cpp
-int num;				//unitialized int
-int num = 12;			//initialized int
-int values[3];			//unitialized array, must declare size,eg 3 elements
-int values[] = {1,2,3};	//initialized to values, don't need size
-int values[3] = {};		//auto initializes to [0,0,0],but need size
-int values[] {1,2,3};	//universal initialization is new. 
-static int values[3]; 	//static arrays are always initialized to zeros if not explicity set.
-int nums[][3] = {		//multidimensional array
-        {1,2,3},		//declare both sizes if empty. only 2nd needed if initialized
-        {4,5,6}			// use for loop to populate if empty.
-    };		
-string s("a;lksdjalksjflkasdfk");	//different way to assign string
+int num;     //unitialized int
+int num = 12;   //initialized int
+int values[3];   //unitialized array, must declare size,eg 3 elements
+int values[] = {1,2,3}; //initialized to values, don't need size
+int values[3] = {};  //auto initializes to [0,0,0],but need size
+int values[] {1,2,3}; //universal initialization is new.
+static int values[3];  //static arrays are always initialized to zeros if not explicity set.
+int nums[][3] = {  //multidimensional array
+        {1,2,3},  //declare both sizes if empty. only 2nd needed if initialized
+        {4,5,6}   // use for loop to populate if empty.
+    };
+string s("a;lksdjalksjflkasdfk"); //different way to assign string
 bigger = a > b ? a : b; //ternary
 bigger = a > b ? (smaller = b, a) : (smaller = a, b); //double assign ternary,comma operator
 
 ```
+
 ### Casting/Conversion
 
 ```cpp
@@ -42,51 +45,56 @@ x = (int)z; // old way, z is cast to int temporarily and assigned to x
 x = static_cast<int>(z); // new way
 typeid(x).name(); // checks type
 ```
+
 ### Integer info
 
 ```cpp
-INT_MAX		//2147483647
-INT_MIN		//-2147483647
-UINT_MAX	//4294967295
+INT_MAX  //2147483647
+INT_MIN  //-2147483647
+UINT_MAX //4294967295
 ```
+
 ### Char info
 
 ```cpp
 char cval = '7'; //7
-(int)cval;	//ascii code for character '7'
+(int)cval; //ascii code for character '7'
 sizeof(char) //1 byte
-(wchar_t)cval	//cast to ascii code number 55
+(wchar_t)cval //cast to ascii code number 55
 
-wchar_t wval = 'i'; 	//gives ascii code of 'i' of 105
-(char)wval;		//recast to 'i'
+wchar_t wval = 'i';  //gives ascii code of 'i' of 105
+(char)wval;  //recast to 'i'
 ```
 
 ### Strings
+
 ```cpp
 s.at(i) //same as s[i] but it checks for out of bounds. safer than operator[i]
-getline(cin,s) //like cin >> s, but will read up to newline. 
+getline(cin,s) //like cin >> s, but will read up to newline.
 cin >> s //only gets a word
 isupper(s.at(i)) // true/false
-s.insert(0,1,s[i]) //insert char at pos 0; 
+s.insert(0,1,s[i]) //insert char at pos 0;
 num = static_cast<int>(s.at(i)); //get ascii of string character
 ```
+
 ## Loops
 
 ### For Loop Misc
+
 ```cpp
 //reverse loop
 for(int i=str.length()-1;i >= 0; i--)...
 
 //to get length of 1-D array get sizeof(array) / sizeof(array type)
 for(int i=0; i < sizeof(arr) / sizeof(int); i++){
-	cout << arr[i] << " " << flush;
+ cout << arr[i] << " " << flush;
 }
 
 // length of 2-D array
 for(int i=0; i < sizeof(arr) / sizeof(arr[0]); i++){
-	for int j=0; j < sizeof(arr[0]) / sizeof(int); j++){
-		cout << arr[i][j] << " " << flush;
-	}
+ for int j=0; j < sizeof(arr[0]) / sizeof(int); j++){
+  cout << arr[i][j] << " " << flush;
+ }
 }
 
 //loop through string
@@ -95,20 +103,20 @@ char c;
 int i = 0;
 while (( c = s.at(i++)) != '!')
 {
-	cout << c << ":"<< (int)c << endl;
+ cout << c << ":"<< (int)c << endl;
 }
 ```
 
 ## Functions
 
 ### Function info
+
 ```cpp
 
 void someFunction(int, double); //functions prototype must be declared prior to use. param name optional
 int someFunction(string s, int &num); // pass by reference num.
 
 ```
-
 
 ## Common Preprocessor Directives
 
@@ -165,15 +173,17 @@ flush //flush stream buffer
 // Strings classes
 // Could already be included in <iostream>
 insert
-at(index)	//gets character at index
-stoi(str)	//string to int
-stod(str) 	// string to whole number
-stof(str)	// string to float
+at(index) //gets character at index
+stoi(str) //string to int
+stod(str)  // string to whole number
+stof(str) // string to float
 add stuff as i learn
 ```
 
 ### \<algorithm\>
+
 So many cool things here
+
 ```cpp
 all_of, any_of, none_of //bool check
 for_each
@@ -190,20 +200,23 @@ reverse //in place reverse,not returning collection
 ```
 
 ### \<ctime\>
+
 ```cpp
 time(unsigned int)
 ```
 
 ### \<sstream\>
+
 ```cpp
 // allowes concat of string and int?
 ```
 
 ### \<ctype\>
+
 ```cpp
-isdigit(ch)	//is character 0-9
-isalpha(ch)	//is character alphabet	
-isalnum(ch)	//is character alphanumeric
+isdigit(ch) //is character 0-9
+isalpha(ch) //is character alphabet
+isalnum(ch) //is character alphanumeric
 islower()
 isupper()
 tolower()
@@ -212,6 +225,7 @@ isblank()
 isspace()
 etc
 ```
+
 ---
 
 ## I/O
@@ -268,21 +282,23 @@ switch(val)
 {
 case 1:
 case 2:
-	cout << "case 1 will fallthrough without a break statement" << endl;
+ cout << "case 1 will fallthrough without a break statement" << endl;
 case 3:
-	doSomething();
-	break;
+ doSomething();
+ break;
 default:
-	cout << "if nothing matches" << endl;
+ cout << "if nothing matches" << endl;
 }
 ```
 
 ## Classes
+
 ```cpp
 
 
 
 ```
+
 ## Misc
 
 ### Float Comparison
@@ -293,6 +309,7 @@ float1 < float2 //works if precision isn't too many digits
 ```
 
 ### Random
+
 ```cpp
 srand(static_cast<unsigned int>(time(0)));  //seed rand with time. requires ctime
 int r = rand(); //16 bit 0-32767
