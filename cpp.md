@@ -66,15 +66,17 @@ wchar_t wval = 'i';  //gives ascii code of 'i' of 105
 (char)wval;  //recast to 'i'
 ```
 
-### Strings
+## Strings
 
 ```cpp
 s.at(i) //same as s[i] but it checks for out of bounds. safer than operator[i]
 getline(cin,s) //like cin >> s, but will read up to newline.
-cin >> s //only gets a word
+cin >> s //only gets a word, stops at whitespace
 isupper(s.at(i)) // true/false
 s.insert(0,1,s[i]) //insert char at pos 0;
 num = static_cast<int>(s.at(i)); //get ascii of string character
+string str = s.substr(8,3); //return substring from position 8 and 3 characters.
+s.find("charOrString",0);returns index number where "charOrString starts. 0 is start point to searchs
 ```
 
 ## Loops
