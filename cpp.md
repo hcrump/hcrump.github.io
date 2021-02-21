@@ -125,8 +125,8 @@ v.push_back(32); // adds int value of 32 to end of v
 ### Vector Functions
 ```cpp
 Function              Description
-at(size_type index)	Returns a reference to the element at the location specified.
-back()	Returns a reference to the element at the end of the vector.
+at(size_type index)   // Returns a reference to the element at the location specified.
+back()                // Returns a reference to the element at the end of the vector.
 begin()	Returns an iterator to the start of the vector.
 clear()	Erases the vector.
 empty()	Returns true if the vector is empty.
@@ -143,6 +143,10 @@ size()	Returns the number of elements in the vector.
 ==, !=	Returns true or false.
 <, <=, >, >=	Returns true or false
 =	Assigns one vector to another
+```
+### Iterators
+```cpp
+
 ```
 ## Loops
 
