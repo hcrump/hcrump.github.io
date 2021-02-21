@@ -106,11 +106,44 @@ strcmp(str1, str2) // str1=str2 is 0, str1<str2 is -1, str1>str2 is 1
 ```
 
 ## Vectors
+### Vector Declaration
 ```cpp
+// array that handles changing size
+#include <vector>  //needs
+vector <type> v; //has no size
+v[1] = 10; //error, must reserve space
 
+vector <int> v(100) // reserve space using constructor
+v[1] = 10; // works now
 
+v.resize(25); // create space for 25 items 
+v.resize(v.size() + 25) // resizes to another 50
+
+v.size(); //gives number of elements (unsigned int)
+v.push_back(32); // adds int value of 32 to end of v
 ```
-
+### Vector Functions
+```cpp
+Function              Description
+at(size_type index)	Returns a reference to the element at the location specified.
+back()	Returns a reference to the element at the end of the vector.
+begin()	Returns an iterator to the start of the vector.
+clear()	Erases the vector.
+empty()	Returns true if the vector is empty.
+end()	Returns an iterator one past the end of the vector.
+erase(iterator where)
+erase(iterator first, iterator last)	Removes a single element or range of elements.
+front()	Returns a reference to the first element of the vector.
+insert(iterator where, const type &val)
+insert(iterator where, size_type number, const type &val)
+insert(iterator where, iterator input_begin, iterator input_end)	Inserts a value or values into a vector at the specified position(s).
+pop_back()	Deletes the element at the end of the vector. (Compare with back)
+push_back(const type &val)	Adds an element to the end of the vector.
+size()	Returns the number of elements in the vector.
+==, !=	Returns true or false.
+<, <=, >, >=	Returns true or false
+=	Assigns one vector to another
+```
 ## Loops
 
 ### For Loop Misc
