@@ -127,22 +127,22 @@ v.push_back(32); // adds int value of 32 to end of v
 Function              Description
 at(size_type index)   // Returns a reference to the element at the location specified.
 back()                // Returns a reference to the element at the end of the vector.
-begin()	Returns an iterator to the start of the vector.
-clear()	Erases the vector.
-empty()	Returns true if the vector is empty.
-end()	Returns an iterator one past the end of the vector.
+begin()               // Returns an iterator to the start of the vector.
+clear()               // Erases the vector.
+empty()               // Returns true if the vector is empty.
+end()                 // Returns an iterator one past the end of the vector.
 erase(iterator where)
-erase(iterator first, iterator last)	Removes a single element or range of elements.
-front()	Returns a reference to the first element of the vector.
+erase(iterator first, iterator last)  Removes a single element or range of elements.
+front()               // Returns a reference to the first element of the vector.
 insert(iterator where, const type &val)
 insert(iterator where, size_type number, const type &val)
-insert(iterator where, iterator input_begin, iterator input_end)	Inserts a value or values into a vector at the specified position(s).
-pop_back()	Deletes the element at the end of the vector. (Compare with back)
-push_back(const type &val)	Adds an element to the end of the vector.
-size()	Returns the number of elements in the vector.
-==, !=	Returns true or false.
-<, <=, >, >=	Returns true or false
-=	Assigns one vector to another
+insert(iterator where, iterator input_begin, iterator input_end) // Inserts a value or values into a vector at the specified position(s).
+pop_back()	          // Deletes the element at the end of the vector. (Compare with back)
+push_back(const type &val)  // Adds an element to the end of the vector.
+size()                // Returns the number of elements in the vector.
+==, !=                // Returns true or false.
+<, <=, >, >=          // Returns true or false
+=                     // Assigns one vector to another
 ```
 ### Iterators
 ```cpp
