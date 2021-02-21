@@ -29,7 +29,7 @@ static int values[3];  //static arrays are always initialized to zeros if not ex
 int nums[][3] = {  //multidimensional array
         {1,2,3},  //declare both sizes if empty. only 2nd needed if initialized
         {4,5,6}   // use for loop to populate if empty.
-    };
+    };   // must end with semicolon
 string s("a;lksdjalksjflkasdfk"); //different way to assign string
 bigger = a > b ? a : b; //ternary
 bigger = a > b ? (smaller = b, a) : (smaller = a, b); //double assign ternary,comma operator
@@ -44,6 +44,7 @@ int x = somechar // some things are implicit and don't need casts
 x = (int)z; // old way, z is cast to int temporarily and assigned to x
 x = static_cast<int>(z); // new way
 typeid(x).name(); // checks type
+::x //unary scope operator, says to use the global version of variable x
 ```
 
 ### Integer info
@@ -77,6 +78,37 @@ s.insert(0,1,s[i]) //insert char at pos 0;
 num = static_cast<int>(s.at(i)); //get ascii of string character
 string str = s.substr(8,3); //return substring from position 8 and 3 characters.
 s.find("charOrString",0);returns index number where "charOrString starts. 0 is start point to searchs
+```
+## CStrings
+```cpp
+// old C type strings are char arrays with '\0' (null) at end
+// only holds 24 characters including '\0'
+
+char aString[] = "hello"; // compiler adds '\0', so "hello\0";
+cin >> aString; //appends the '\0' to the array too.
+
+// can't copy using '='
+// use strcpy_s the _s is thread safe. old was strcpy
+strcpy_s(dest,src);
+
+// passing to functions
+someFunc(ar); //same as normal arrays
+
+// string length
+int length = strlen(ar); //returns length - null
+
+// common string functions
+strcpy_s(destStr, srcStr); // copies srcStr to destStr
+strcpy_s(destStr, size, srcStr); // copies size number of characters
+strlen(str) // returns length not including null
+strcat(str1,str2) //concats both strings
+strcmp(str1, str2) // str1=str2 is 0, str1<str2 is -1, str1>str2 is 1
+```
+
+## Vectors
+```cpp
+
+
 ```
 
 ## Loops
