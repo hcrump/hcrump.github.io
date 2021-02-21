@@ -148,15 +148,15 @@ size()                // Returns the number of elements in the vector.
 ```cpp
 vector::iterator p;  // create iterator
 
-vector <int> v;
+vector <int> v;      // example
 vector <int>::iterator p;
 
-p = v.begin();
-p = v.end();
+p = v.begin();  // set to begin()
+p = v.end();    // also can set to end()
 
-for(p = v.begin(); p < v.end(); p++)
+for(p = v.begin(); p < v.end(); p++) //loop example
 
-cout << *p << endl; // get output
+cout << *p << endl; // get output this way
 ```
 ## Loops
 
