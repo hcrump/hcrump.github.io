@@ -26,6 +26,7 @@ int values[] = {1,2,3}; //initialized to values, don't need size
 int values[3] = {};  //auto initializes to [0,0,0],but need size
 int values[] {1,2,3}; //universal initialization is new.
 static int values[3];  //static arrays are always initialized to zeros if not explicity set.
+int num[10][10];  //multidimensional array
 int nums[][3] = {  //multidimensional array
         {1,2,3},  //declare both sizes if empty. only 2nd needed if initialized
         {4,5,6}   // use for loop to populate if empty.
@@ -196,6 +197,7 @@ while (( c = s.at(i++)) != '!')
 
 void someFunction(int, double); //functions prototype must be declared prior to use. param name optional
 int someFunction(string s, int &num); // pass by reference num.
+int fillArray(ar[],ar1[][5]); // 2d array must include 2nd constant
 
 ```
 
