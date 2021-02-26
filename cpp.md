@@ -228,9 +228,25 @@ ptr++ // same as arr[1]
     cout << s << endl; // prints Hello , wut?
 	
 // apparently strings are handled differently
+// the << operator is overloaded for const char* which prints the string
+// int array for example is overloaded to const void* and prints the address
+// just cast to const void* to get address
+// eg. cout << static_cast<const void*>(s) << endl;  parens around s needed.
+// same address as the array, &str;
 
 ```
-
+### Pointer Incrementing 
+```cpp
+// voodoo
+while(*s){
+	cout << *s++ << endl; 
+}
+// why does this work?
+// ++ has higher precedence than *
+// ++ increments s, but only after the expression is done
+// *s, the dereferenced value is printed, then
+// s, the address is finally incremented
+```
 
 ### Pointers to functions
 ```cpp
