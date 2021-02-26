@@ -1,6 +1,15 @@
 # C++
 
-## Variables
+## Basics
+
+### Include / Define
+```cpp
+#include <iostream>
+#include <math.h>
+#define show(a) std::cout<<a<<std::endl;
+#define Syswait std::system("pause");
+```
+### Variables
 
 ```cpp
 | short (also called a short int) |  2 |  -32,767 to 32,767                                         |  N/A |
@@ -189,6 +198,67 @@ while (( c = s.at(i++)) != '!')
 }
 ```
 
+### Pointers
+```cpp
+int *ptr;  // declare pointer of type int called ptr
+int num = 0;
+ptr = &num; // assign address of num
+ptr // address
+*ptr // value at num's address, 0
+
+
+int arr[] = {1,2,3};
+int *ptr = arr; // no need for & since arrays are referenced
+int *ptr = &arr[0]; // can point to any part of array
+ptr // address of arr and arr[0];
+*ptr // value at arr[0] -> 1
+ptr++ // same as arr[1]
+*ptr++ // incrementing value at arr[0], 1 is now 2
+```
+
+### Pointer to strings 
+```cpp
+// behaves different?
+    int ar[] = { 1,2 };
+    int* p = ar;
+    cout << p << endl; // prints address
+
+    char str[] = "Hello";
+    char* s = str;
+    cout << s << endl; // prints Hello , wut?
+	
+// apparently strings are handled differently
+
+```
+
+
+### Pointers to functions
+```cpp
+// void function pointer can point to other functions.
+void foo();
+int main()
+{
+    void (*func)();
+    func = foo;
+    func();
+
+    return 0;
+}
+void foo()
+{
+    cout << "buh" << endl;
+}
+
+//calling pointer to function with address, i think
+void *ptr;
+ptr = ...some address;
+((void (*)(void)) ptr)();
+// or
+typedef void (*func_type)(void);
+((func_type) ptr)();
+// or
+reinterpret_cast<void(*)() > ptr)()
+```
 ## Functions
 
 ### Function info
