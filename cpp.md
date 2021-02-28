@@ -81,21 +81,27 @@ wchar_t wval = 'i';  //gives ascii code of 'i' of 105
 
 ```cpp
 s.at(i) //same as s[i] but it checks for out of bounds. safer than operator[i]
-getline(cin,s) //like cin >> s, but will read up to newline.
+getline(cin,s) //like cin >> s, but will read up to newline. std strings. for cstrings use cin.getline
 cin >> s //only gets a word, stops at whitespace
 isupper(s.at(i)) // true/false
 s.insert(0,1,s[i]) //insert char at pos 0;
 num = static_cast<int>(s.at(i)); //get ascii of string character
 string str = s.substr(8,3); //return substring from position 8 and 3 characters.
 s.find("charOrString",0);returns index number where "charOrString starts. 0 is start point to searchs
+strlen returns length of string not including trailing null
+sizeof returns number of bytes based on type * #elements. so sizeof(['a','b','\0'])is 3.
 ```
 ## CStrings
 ```cpp
 // old C type strings are char arrays with '\0' (null) at end
-// only holds 24 characters including '\0'
 
+char str[24]; // only holds 24 characters including '\0', 23chars + null
 char aString[] = "hello"; // compiler adds '\0', so "hello\0";
-cin >> aString; //appends the '\0' to the array too.
+char aString[] = {'h','e','l','l','o',\0'} // equivalent
+cin >> aString; // no. will end at space
+cin.getline(str,maxchars)  // yes, reads spaces, reads until newline, strips newline
+cin.get(str,maxchars) // leaves terminating character in stream (eg. \n);
+//maxchars includes null. So, make it the same as array size.
 
 // can't copy using '='
 // use strcpy_s the _s is thread safe. old was strcpy
@@ -307,6 +313,7 @@ function(); //calls HelloWorld():
 void someFunction(int, double); //functions prototype must be declared prior to use. param name optional
 int someFunction(string s, int &num); // pass by reference num.
 int fillArray(ar[],ar1[][5]); // 2d array must include 2nd constant
+int func(int x, int y=0); // default arg should go in prototype, not function.
 
 ```
 
