@@ -196,9 +196,13 @@ while (( c = s.at(i++)) != '!')
 {
  cout << c << ":"<< (int)c << endl;
 }
+
+// Range Based for loop
+for(int i : someVector)
 ```
 
-### Pointers
+## Pointers
+### Pointer Basics
 ```cpp
 int *ptr;  // declare pointer of type int called ptr
 int num = 0;
@@ -218,14 +222,14 @@ ptr++ // same as arr[1]
 
 ### Pointer to strings 
 ```cpp
-// behaves different?
-    int ar[] = { 1,2 };
-    int* p = ar;
-    cout << p << endl; // prints address
+// behaves differently?
+int ar[] = { 1,2 };
+int* p = ar;
+cout << p << endl; // prints address
 
-    char str[] = "Hello";
-    char* s = str;
-    cout << s << endl; // prints Hello , wut?
+char str[] = "Hello";
+char* s = str;
+cout << s << endl; // prints Hello , wut?
 	
 // apparently strings are handled differently
 // the << operator is overloaded for const char* which prints the string
@@ -241,10 +245,10 @@ ptr++ // same as arr[1]
 while(*s){
 	cout << *s++ << endl; 
 }
-// why does this work?
-// ++ has higher precedence than *
-// ++ increments s, but only after the expression is done
-// *s, the dereferenced value is printed, then
+// why does this work? ++ increments s, not *s.
+// ++ has higher precedence than *,so
+// ++ will increment s, but only after the expression is done
+// *s, the dereferenced value is printed first, then
 // s, the address is finally incremented
 ```
 
@@ -265,6 +269,21 @@ void foo()
     cout << "buh" << endl;
 }
 
+int main()
+	void (*func[4])();
+
+	func[0] = one;
+	func[1] = two;
+	func[2] = three;
+	func[3] = four;
+
+	for (int i = 0; i < 4; i++)
+	{
+		func[i]();
+	}
+...
+
+
 //calling pointer to function with address, i think
 void *ptr;
 ptr = ...some address;
@@ -274,6 +293,10 @@ typedef void (*func_type)(void);
 ((func_type) ptr)();
 // or
 reinterpret_cast<void(*)() > ptr)()
+// or assign to a function 
+typedef void(*HelloWorldFunction)();
+HelloWorldFunction function = HelloWorld;
+function(); //calls HelloWorld():
 ```
 ## Functions
 
