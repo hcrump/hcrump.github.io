@@ -208,6 +208,7 @@ for(int i : someVector)
 ```
 
 ## Pointers
+
 ### Pointer Basics
 ```cpp
 int *ptr;  // declare pointer of type int called ptr
@@ -224,6 +225,31 @@ ptr // address of arr and arr[0];
 *ptr // value at arr[0] -> 1
 ptr++ // same as arr[1]
 *ptr++ // incrementing value at arr[0], 1 is now 2
+```
+
+### Pointer to Pointer 
+```cpp
+const char* c[] = {	"first", "second", "third"};
+const char** cp[] = { c, c+1, c+2 };
+c 008FF8E8
+c + 1 008FF8EC
+*c first
+*c + 1 irst
+*(c + 1) second
+c[0] first
+c[1] second
+*c[0] f
+*c[1] s
+
+cp 008FF8D4
+*cp 008FF8E8
+**cp first
+cp[0] 008FF8E8
+cp[1] 008FF8EC
+*cp[0] first
+*cp[1] second
+**cp[0] f
+**cp[1] s
 ```
 
 ### Pointer to strings 
