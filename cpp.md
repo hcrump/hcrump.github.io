@@ -229,7 +229,7 @@ ptr++ // same as arr[1]
 
 ### Pointer to Pointer 
 ```cpp
-const char* c[] = {	"first", "second", "third"};
+const char* c[] = {"first", "second", "third"};
 const char** cp[] = { c, c+1, c+2 };
 c 008FF8E8
 c + 1 008FF8EC
