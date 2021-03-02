@@ -250,6 +250,18 @@ cp[1] 008FF8EC
 *cp[1] second
 **cp[0] f
 **cp[1] s
+
+const char* p = &c[2][0];
+*p t
+c[2][0] t
+&c[2][0] third
+c[2] third
+&c[2] 001DFE74
+
+const char*** cpp = cp;
+//*--*++cpp, cancels out to **cpp
+//*cpp[-2+3], same as *cpp[1] or "second"
+//**++cpp, "second"
 ```
 
 ### Pointer to strings 
