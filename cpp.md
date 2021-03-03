@@ -355,6 +355,112 @@ int func(int x, int y=0); // default arg should go in prototype, not function.
 
 ```
 
+## Structures
+```cpp
+// customer data structure definitoin
+struct Time
+{
+	int hour; // cannot initialize as this is just a definition
+	int min;
+	int sec;
+};
+Time t = {12,22,34}; // initialize
+t.hour = ... // init or set a value.
+Time t[5]; //array of 5 structs
+Time t[2] = { {1,2,3},{2,3,4}}; //init values 
+
+//pointers to structs
+void somefunc(Time *tm);
+tm->hour = 1; //use arrow instead of dot for pointers to struct values
+```
+
+## Classes
+
+### Class Definition
+```cpp
+// Rectangle.h
+#ifndef RECTANGLE
+#define RECTANGLE
+
+class Rectangle
+{
+	private:
+		int width,height;
+	public:
+		Rectangle();  // constructor - no return
+		Rectangle(int length, int width); // overloaded constructor
+		void setValue(int len, int wid);
+		int area();
+};
+```
+
+### Class Usage
+```cpp
+// Rectangle.cpp
+#include <iostream>
+#include "Rectangle.h"
+
+// constructor
+Rectangle::Rectangle()
+{
+	this->length = 1;
+	this->width = 1;
+}
+
+// constructor with parameters
+Rectangle::Rectangle(int length, int width)
+{
+	this->length = length;
+	this->width = width;
+}
+
+// setter method
+void Rectangle::setValues(int len, int wid)
+{
+	length = len;
+	width = wid;
+}
+
+// getter method
+int Rectangle::area()
+{
+	return length * width;
+}
+
+// accessor (getter/setter) - function that gets/sets private data
+// mutator - function that modifies private data
+// default constructor - created by compiler if you don'take
+// working constructor - takes all possible settings at once
+
+// create Rectangle object on stack (short term)
+// automatic storage duration, destroyed when out of scope
+Rectangle r; 
+r.setValue(2,4); // sets length and width
+r.area(); //returns 8
+
+// new keyword means this is stored on heap, long term. returns pointer
+// dynamically allocated objects must be deleted manually
+Rectangle *r = new Rectangle(); 
+r->setValue(...) // pointer way.
+delete r; // must delete if using pointers, when done.
+```
+
+### Class Initializer List
+```cpp
+// alternative way to set defaults
+
+// constructor
+Rectangle::Rectangle()
+: length(1), width(1)
+{
+}
+
+// constructor with parameters
+Rectangle::Rectangle(int length, int width)
+: length(length), width(width)
+{
+}
+```
 ## Common Preprocessor Directives
 
 ### \<iostream\>
@@ -528,13 +634,7 @@ default:
 }
 ```
 
-## Classes
 
-```cpp
-
-
-
-```
 
 ## Misc
 
