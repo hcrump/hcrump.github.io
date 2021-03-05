@@ -90,6 +90,7 @@ string str = s.substr(8,3); //return substring from position 8 and 3 characters.
 s.find("charOrString",0);returns index number where "charOrString starts. 0 is start point to searchs
 strlen returns length of string not including trailing null
 sizeof returns number of bytes based on type * #elements. so sizeof(['a','b','\0'])is 3.
+std::to_string(x) //another way to cast to string, safe.
 ```
 ## CStrings
 ```cpp
@@ -372,14 +373,25 @@ Time t[2] = { {1,2,3},{2,3,4}}; //init values
 //pointers to structs
 void somefunc(Time *tm);
 tm->hour = 1; //use arrow instead of dot for pointers to struct values
+
+// copying
+Time t1;
+t1 = t;  // this is actually a copy, not like arrays
+
+//misc
+// structs can have constructors and methods
+// basically same as classes in c++
 ```
 
 ## Classes
 
-### Class Definition
+### Class header files
 ```cpp
+// prototypes/constants/structs/classes, etc
+
 // Rectangle.h
-#ifndef RECTANGLE
+#pragma once // same as ifndef basically
+#ifndef RECTANGLE // can be anything, refers to this file
 #define RECTANGLE
 
 class Rectangle
@@ -394,8 +406,10 @@ class Rectangle
 };
 ```
 
-### Class Usage
+### Class cpp file
 ```cpp
+// member functions/variables/etc, 
+
 // Rectangle.cpp
 #include <iostream>
 #include "Rectangle.h"
@@ -403,7 +417,7 @@ class Rectangle
 // constructor
 Rectangle::Rectangle()
 {
-	this->length = 1;
+	this->length = 1; // "this" is a special pointer
 	this->width = 1;
 }
 
@@ -520,6 +534,7 @@ at(index) //gets character at index
 stoi(str) //string to int
 stod(str)  // string to whole number
 stof(str) // string to float
+to_string(x)
 add stuff as i learn
 ```
 
