@@ -5,9 +5,11 @@
 ### Include / Define
 ```cpp
 #include <iostream>
-#include <math.h>
+#include <cmath> //math.h is old
 #define show(a) std::cout<<a<<std::endl;
 #define Syswait std::system("pause");
+using namespace std; // entire std namespace
+using std::cout;  // individual std functions
 ```
 ### Variables
 
@@ -75,6 +77,8 @@ sizeof(char) //1 byte
 
 wchar_t wval = 'i';  //gives ascii code of 'i' of 105
 (char)wval;  //recast to 'i'
+char * p; //pointer to char
+// chars have implicit cast to int for ascii. No need to cast.
 ```
 
 ## Strings
@@ -475,6 +479,14 @@ Rectangle::Rectangle(int length, int width)
 {
 }
 ```
+### Class comments
+```cpp
+using this-> is optional. Usually do it when variable names are the same.
+private variables and function names can't be the same, collision.
+Use constructor delegation. 
+Use default constructor if initializing arrays of objects.
+
+```
 ## Common Preprocessor Directives
 
 ### \<iostream\>
@@ -597,7 +609,7 @@ cin.clear() // if cin.fail state, cin won't take input, may cause endless loops
 cin.ignore() // after clear, read up on this
 getline(cin,str) // gets string;
 scanf
-
+cin.getline(str,size) // use with cstrings - see cstring section
 ```
 
 ### Output
@@ -669,4 +681,9 @@ int rRange = rand() % 101; //0-100
 int rRange2 = rand() % 100 + 1; //1-100 ((0-99)+1)
 int someNumber = rand() % ((max - min) + 1) + min; //(25,10) is 0-15 + min. so, 10-25
 'A' + rand() % 26 // random uppercase letter
+```
+### Comments
+```cpp
+You can't have the same variable and function names, they collide. Found this in my class private definition.
+
 ```
