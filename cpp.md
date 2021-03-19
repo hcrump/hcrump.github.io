@@ -483,19 +483,28 @@ Rectangle::Rectangle(int length, int width)
 ### Class Inheritance
 ```cpp
 class Animal {
+private:
+    int id;
 public:
+    Animal(): { cout << "Animal constructor" << endl; 
+	Animal(int id): id(id) {cout << "Parameter Animal constructor" << endl;
     void speak() { cout << "Grrrr" << endl; }
 };
 
 class Cat: public Animal {
 public:
+    Cat(): { cout << "Cat constructor" << endl; 
+	Cat(int id): Machine(id) { cout << "Parameter Cat constructor" << endl;
     void purr() { cout << "Purrr" << endl; }
 };
 
 class Tiger: public Cat {
 public:
+    Tiger(): { cout << "Tiger constructor" << endl; 
     void jump() { cout << "Tiger jumping" << endl; }
 };
+
+//this works
 
 int main(){
     Animal a;
@@ -510,6 +519,9 @@ int main(){
 	tiger.purr();
 	tiger.jump();
 }
+// Constructor inheritance: empty constructor will call superclass constructors as well.
+// Chain parameter constructors if you want to pass data (ex. id variable)
+// You can't call private data of super class from inherited.
 ```
 
 
