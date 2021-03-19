@@ -479,7 +479,42 @@ Rectangle::Rectangle(int length, int width)
 {
 }
 ```
-### Class comments
+
+### Class Inheritance
+```cpp
+class Animal {
+public:
+    void speak() { cout << "Grrrr" << endl; }
+};
+
+class Cat: public Animal {
+public:
+    void purr() { cout << "Purrr" << endl; }
+};
+
+class Tiger: public Cat {
+public:
+    void jump() { cout << "Tiger jumping" << endl; }
+};
+
+int main(){
+    Animal a;
+	a.speak();
+	
+	Cat cat;
+	cat.speak();
+	cat.purr();
+	
+	Tiger tiger;
+	tiger.speak();
+	tiger.purr();
+	tiger.jump();
+}
+```
+
+
+
+### Class Notes
 ```cpp
 using this-> is optional. Usually do it when variable names are the same.
 private variables and function names can't be the same, collision.
@@ -682,7 +717,7 @@ int rRange2 = rand() % 100 + 1; //1-100 ((0-99)+1)
 int someNumber = rand() % ((max - min) + 1) + min; //(25,10) is 0-15 + min. so, 10-25
 'A' + rand() % 26 // random uppercase letter
 ```
-### Comments
+### Misc Notes
 ```cpp
 You can't have the same variable and function names, they collide. Found this in my class private definition.
 
