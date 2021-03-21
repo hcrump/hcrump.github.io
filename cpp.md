@@ -548,6 +548,23 @@ cerr //Standard output stream for errors
 clog //Standard output stream for logging
 ```
 
+### \<cstdlib\>
+
+```cpp
+// c++ version of c's <stdlib.h>
+// standard utilities library, usually loaded with <iostream>
+rand,srand
+malloc,etc
+```
+
+### \<cstdio\>
+
+```cpp
+// c++ version of c's <stdio.h>
+
+printf,scanf,fprintf, etc
+```
+
 ### \<iomanip\>
 
 ```cpp
