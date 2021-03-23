@@ -522,6 +522,8 @@ int main(){
 // Constructor inheritance: empty constructor will call superclass constructors as well.
 // Chain parameter constructors if you want to pass data (ex. id variable)
 // You can't call private data of super class from inherited.
+
+virtual void speak()=0; // forces all subclasses to have an override speak() function.
 ```
 
 
@@ -532,6 +534,8 @@ using this-> is optional. Usually do it when variable names are the same.
 private variables and function names can't be the same, collision.
 Use constructor delegation. 
 Use default constructor if initializing arrays of objects.
+virtual function keyword forces subclasses to use their method, not base class. Polymorophism.
+virtual destructor should always be used also. 
 
 ```
 ## Common Preprocessor Directives
@@ -563,6 +567,13 @@ malloc,etc
 // c++ version of c's <stdio.h>
 
 printf,scanf,fprintf, etc
+```
+
+### \<cmath\>
+
+```cpp
+// c++ version of old c's <math.h>
+// must use #define _USE_MATH_DEFINES, to get M_PI and other constants to work
 ```
 
 ### \<iomanip\>
@@ -745,9 +756,33 @@ int rRange = rand() % 101; //0-100
 int rRange2 = rand() % 100 + 1; //1-100 ((0-99)+1)
 int someNumber = rand() % ((max - min) + 1) + min; //(25,10) is 0-15 + min. so, 10-25
 'A' + rand() % 26 // random uppercase letter
+rand() / RAND_MAX; //gives a number between 0 and 1. RAND_MAX is 32767
+```
+
+### Colors
+```cpp
+// extracting colors from 32bit number
+int color = 0x123456  // rgb, rrggbb
+unsigned int char red = (color & 0xFF0000) >> 16; //bitwise AND (&).Then bitshift right 2bytes
+unsigned int char red = (color & 0x00FF00) >> 8; // ... 1 byte
+unsigned int char red = (color & 0x0000FF);
+
+// example of random number in binary and AND mask
+// color: 100010111101111011111011
+// mask:  111111110000000000000000
+// result:100010110000000000000000
+
+cout << hex << (int)red << endl; // not sure you need to cast
+unsigned char redAgain = color >> 16; //do this instead of the bit shifting above?
 ```
 ### Misc Notes
 ```cpp
 You can't have the same variable and function names, they collide. Found this in my class private definition.
 
 ```
+
+## THINGS To LEARN
+pure virtual functions
+abstract class
+template class
+operator overload
