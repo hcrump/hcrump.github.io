@@ -18,10 +18,12 @@ let a = []; //array
 let a = {}; //object
 let [a, b, c] = [1, 2, 3]; //all at once
 ```
-### Parameter 
+
+### Parameter
+
 ```js
 function buh(arr){...} // example function
-buh([1,2,3],1,2);	//example call
+buh([1,2,3],1,2);  //example call
 
 **// how to get arguments from args parameter**
 
@@ -37,6 +39,7 @@ let args = Array.from(arguments).slice(1); // [1,2]
 function buh(...arr){...}
 let args = [...arr].slice(1);
 ```
+
 ---
 
 ## Strings
@@ -46,7 +49,7 @@ let args = [...arr].slice(1);
 ```js
 string.split("").reverse().join(""); //reverse string
 string.repeat(x); //repeat string x times
-string.slice(from,until); // like array slice.
+string.slice(from, until); // like array slice.
 ```
 
 ### String to Array
@@ -95,38 +98,45 @@ n + ""; //same as above
 ### String Methods
 
 ##### split
+
 ```js
 // splits string into array
 split(separator,[how many to split]);
 str = "1,2,34-34";
 str.split(); // ["1,2,34-34"]
 str.split("-"); // ["1,2,34", "34"]
-str.split(""); //["1", ",", "2", ",", "3", "4", "-", "3", "4"] 
+str.split(""); //["1", ",", "2", ",", "3", "4", "-", "3", "4"]
 str.split("",2); //["1", ","]
 str.split(/[^a-z]/ig) // split on non letters (i.e. get words only)
 let x = title.trim().toLowerCase().split(/[^a-z]+/ig).join("-"); //" BUH buh" is "buh-buh"
 ```
-### Replace 
+
+### Replace
+
 Also check regex section
+
 ```js
 // replace and keep capitalization
-str = str
-.replace(before,before[0] == before[0].toLowerCase()
-?after.toLowerCase()
-:after[0].toUpperCase() + after.slice(1));
+str = str.replace(
+	before,
+	before[0] == before[0].toLowerCase()
+		? after.toLowerCase()
+		: after[0].toUpperCase() + after.slice(1)
+);
 
 // piglatin
 str = str
-.replace(/(^[aeiou].*)/,'$1way')  //startwith vowel, add way at end
-.replace(/(^[^aeiou]+)(.*)/,'$2$1ay'); //else leading consanants to end + 'ay'
+	.replace(/(^[aeiou].*)/, "$1way") //startwith vowel, add way at end
+	.replace(/(^[^aeiou]+)(.*)/, "$2$1ay"); //else leading consanants to end + 'ay'
 ```
+
 ---
 
 ## Arrays
 
 ### Array Misc
 
-##### create
+#### create
 
 ```js
 Array.from  // check
@@ -138,13 +148,13 @@ let arr = [].concat(arr2);
 let arr = anything that returns an array //Object.keys/values and map/reduce/filter ,etc
 ```
 
-##### other
+#### other
 
 ```js
 arr.fill; // initialize
 ```
 
-##### Array to String
+#### Array to String
 
 ```js
 arr.join(""); // '123'. Can add separator >> (',') '1,2,3'
@@ -158,7 +168,7 @@ arr = [3, 4, 5];
 arr2 = [4, 5, 6];
 let merged = [0, ...ar, 2, ...ar2];
 let arrcopy = [...arr]; // this is a copy, not a reference
-newarr = arr.slice()// test if this works to slice entire array for copy
+newarr = arr.slice(); // test if this works to slice entire array for copy
 newarr = arr1.concat(arr2); //merges into newarr, originals not altered
 ```
 
@@ -174,18 +184,19 @@ const [a,b,...arr] = [1,2,3,4,5] // arr = [3,4,5], neat way to slice.
 
 ### Array Methods
 
-##### slice
+#### slice
 
 ```js
 // copies from array
 // slice(from index, until index but not including)
 // Returns new array of deleted entries; Original IS NOT altered.
 
-x=[0,1,2,3,4]
-let newarr = x.slice(1,4);
+x = [0, 1, 2, 3, 4];
+let newarr = x.slice(1, 4);
 //newarr = [1,2,3], x is unchanged
 ```
-##### splice
+
+#### splice
 
 ```js
 // deletes and inserts array
@@ -193,17 +204,17 @@ let newarr = x.slice(1,4);
 // Returns new array of deleted entries; Original IS altered!
 
 // deletes
-x=[0,1,2,3,4]
-let newarr = x.splice(1,4);
+x = [0, 1, 2, 3, 4];
+let newarr = x.splice(1, 4);
 //newarr = [1,2,3,4], x = [0]
 
 // inserts - uses parameters 3-5
-x=[0,1,2,3,4]
-let newarr = x.splice(1,0,'a','b'); //start at index 0, delete 0 elements, insert a and b
+x = [0, 1, 2, 3, 4];
+let newarr = x.splice(1, 0, "a", "b"); //start at index 0, delete 0 elements, insert a and b
 //newarr = [], x = [0,'a','b',1,2,3,4] //returns only deleted elements, so an empty array
 ```
 
-##### map
+#### map
 
 ```js
 let newarr = arr.map(x => x * 2);
@@ -211,22 +222,25 @@ let newarr = arr.map(x => x * 2);
 
 //pull title/rating from array of objects, return object
 ratings = watchList.map(x => ({
-  title: x.Title,
-  rating: x.imdbRating
-  })
-);
+	title: x.Title,
+	rating: x.imdbRating,
+}));
 
 // same, but uses destructuring
-ratings = watchList.map(({ Title: title, imdbRating: rating }) => ({title, rating}));
+ratings = watchList.map(({ Title: title, imdbRating: rating }) => ({
+	title,
+	rating,
+}));
 
 // chaining map/filter notice use of {return{}} instead of {({})}, both work
 filteredList = watchList
-.filter(x => x.imdbRating >=8.0)
-.map(x => {
-  return {
-  title:x.Title,
-  rating:x.imdbRating
-}})
+	.filter(x => x.imdbRating >= 8.0)
+	.map(x => {
+		return {
+			title: x.Title,
+			rating: x.imdbRating,
+		};
+	});
 ```
 
 ##### filter
@@ -236,7 +250,6 @@ filteredList = watchList
 let x = arr.filter((value, index) => {
 	value >= 25;
 });
-
 ```
 
 ##### reduce
@@ -283,19 +296,19 @@ if(arr.every(x => x === 0))
 // **SORT MODIFIES ORIGINAL !!**
 
 //alphabetical sort
-let newarr = arr.sort(); 
+let newarr = arr.sort();
 
 // reverse alphabetic sort
-let x = arr.sort((a,b) => {
-  return a==b ? 0 : a<b ? 1:-1;
+let x = arr.sort((a, b) => {
+	return a == b ? 0 : a < b ? 1 : -1;
 });
 
 //numeric sort
-let newarr = arr.sort((a, b) => a - b); 
+let newarr = arr.sort((a, b) => a - b);
 
 // NON-MUTATING sort versions slice/concat
 let newarr = [].concat(arr).sort();
-let newarr =  arr.slice().sort((a,b) => a-b);
+let newarr = arr.slice().sort((a, b) => a - b);
 ```
 
 ### Array Notes
@@ -363,20 +376,24 @@ Object.entries(obj).map(([key, val]) => {
 	val.map(x => (expected[x.toLowerCase()] = +key));
 });
 ```
+
 ### Object Destructuring
+
 ```js
 const user = {
 	bob: {
 		age: 22,
-		haircolor: "brown"
-	}
+		haircolor: "brown",
+	},
 };
-const {bob: { age,haircolor}} = user; //copies object vars to new vars of the same name
-const {bob: { age : newAge, haircolor:newHairColor }} = user; //copies to different variable names
-
-
-
+const {
+	bob: { age, haircolor },
+} = user; //copies object vars to new vars of the same name
+const {
+	bob: { age: newAge, haircolor: newHairColor },
+} = user; //copies to different variable names
 ```
+
 ### Object Misc
 
 ```js
@@ -432,16 +449,17 @@ export const iterate = (object, func) => {
 ```
 
 ### Curried Functions
+
 ```js
 //
 curried = x => y => x + y;
 curried(1,2) // 3
 
-//same as 
+//same as
 func curried(x){
-	return function(y){
-		return x+y;
-	}
+    return function(y){
+        return x+y;
+    }
 }
 ```
 
@@ -461,6 +479,7 @@ function eatFruit (fruit='strawberry') {
 ```
 
 ---
+
 ### Recursion
 
 ```js
@@ -476,29 +495,29 @@ function countdown(n) {
 // recursive options
 
 function countdown(n) {
-  if (n < 1) {
-    return [];
-  } else {
-    const arr = countdown(n - 1);
-    arr.unshift(n);
-    return arr;
-  }
+	if (n < 1) {
+		return [];
+	} else {
+		const arr = countdown(n - 1);
+		arr.unshift(n);
+		return arr;
+	}
 }
 
-function countdown(n){
-   return n < 1 ? [] : [n].concat(countdown(n - 1));
+function countdown(n) {
+	return n < 1 ? [] : [n].concat(countdown(n - 1));
 }
 
-function countdown(n){
-   return n < 1 ? [] : [n, ...countdown(n - 1)];
+function countdown(n) {
+	return n < 1 ? [] : [n, ...countdown(n - 1)];
 }
 
 //sum a to b
 function sumAll(arr) {
-  let first = arr[0];
-  let last = arr[1];
-  let step = first < last ? 1 : -1;
-  return first == last ? first : first + sumAll([first + step,last]);
+	let first = arr[0];
+	let last = arr[1];
+	let step = first < last ? 1 : -1;
+	return first == last ? first : first + sumAll([first + step, last]);
 }
 ```
 
@@ -516,12 +535,17 @@ class Clock {
 
 	toString() {
 		return (
-			this.hours.toString().padStart(2, "0") + ":" + this.minutes.toString().padStart(2, "0")
+			this.hours.toString().padStart(2, "0") +
+			":" +
+			this.minutes.toString().padStart(2, "0")
 		);
 	}
 
 	plus(mins) {
-		this.hours = (24 + ((this.hours + Math.floor((this.minutes + mins) / 60)) % 24)) % 24;
+		this.hours =
+			(24 +
+				((this.hours + Math.floor((this.minutes + mins) / 60)) % 24)) %
+			24;
 		this.minutes = (60 + ((this.minutes + mins) % 60)) % 60;
 		return this.toString();
 	}
@@ -537,63 +561,74 @@ class Clock {
 
 let myClock = new Clock(50, 22);
 ```
+
 ---
+
 ## Async Stuff
 
 ### Promise
+
 ```js
 // 3 states: pending,fulfilled, rejected
 
 const makeServerRequest = new Promise((resolve, reject) => {
 	// responseFromServer represents a response from a server
 	let responseFromServer;
-    
-	if(responseFromServer) {
+
+	if (responseFromServer) {
 		resolve("We got the data");
-	} else {  
+	} else {
 		reject("Data not received");
 	}
 });
 
 //then comes from result of the resolve method.
 makeServerRequest.then(result => {
-  console.log(result);
-})
+	console.log(result);
+});
 
 makeServerRequest.catch(error => {
-  console.log(error);
+	console.log(error);
 });
 ```
+
 ---
+
 ## Regular Expressions (Regex)
 
 ### Regex Methods
 
 ##### test method
+
 ```js
 // returns true or false
 // form: regex(string)
 let myString = "Hello, World!";
 let myRegex = /Hello/;
 myRegex.test(myString); // returns true/false
-/dog|cat|bird|fish/ // OR match
-/something/i // caseless
+/dog|cat|bird|fish/ / // OR match
+	something /
+	i; // caseless
 ```
+
 ##### match method
+
 ```js
 // match and returns the match
-// form: string(regex)  
-'string'.match(/regex/); // use variable string as well.
-
+// form: string(regex)
+"string".match(/regex/); // use variable string as well.
 ```
+
 ##### replace
+
 ```js
 // regex can be a variable, replaceval can be a string "$2 $1"
-'string'.replace(regex,replaceval)
-"Code Camp".replace(/(\w+)\s(\w+)/, '$2 $1'); //swaps
-
+"string".replace(regex, replaceval);
+"Code Camp".replace(/(\w+)\s(\w+)/, "$2 $1"); //swaps
 ```
+
 ### Flags/Symbols
+
 ```js
 /asdfdas/i 	//case insentive
 /asdfasd/g 	//global. multiple matches.
@@ -608,7 +643,7 @@ myRegex.test(myString); // returns true/false
 /^Cal/		//matches beginning of string starting with Cal
 /asdf$/		//matches asdf at end of line
 /\w+/		//closest to matching alphabet same as /[A-Za-z0-9_]+/
-/\W/		//opposite of \w. 
+/\W/		//opposite of \w.
 /\d/		// 0-9 digits\
 /\D/		// non digits
 /\s/		// white space
@@ -624,12 +659,16 @@ myRegex.test(myString); // returns true/false
 ```
 
 ### Regex examples
+
 ```js
 // split words and put '-' between, then lowercase.
-str.split(/[^a-zA-Z]|(?=[A-Z])/).join('-').toLowerCase();
+str.split(/[^a-zA-Z]|(?=[A-Z])/)
+	.join("-")
+	.toLowerCase();
 //"Teletubbies say Eh-oh" is "teletubbies-say-eh-oh".
 //"AllThe-small Things" is "all-the-small-things".
 ```
+
 ---
 
 ## Dates
@@ -695,35 +734,46 @@ num >>> 0; // triple bitwise Shift
 ```
 
 ---
+
 ## Modules
 
 ### Script
+
 ```js
 // may need to enable type module, not sure
 <script type="module" src="aasdf.js">
 ```
+
 ### Export
+
 ```js
 // do this at end of script with functions
 
 //named export
-export {function1, function2 }; // allows importing of functions.
+export { function1, function2 }; // allows importing of functions.
 
 //default export - can only be one. can't use with let,var,const
-export default function sum(x,y){ return x + y;} //named function
-export default function(x,y) { return x + y;}  //anonymous function
+export default function sum(x, y) {
+	return x + y;
+} //named function
+export default function (x, y) {
+	return x + y;
+} //anonymous function
 ```
+
 ### Import
+
 ```js
 // do this at start of document
 
 //name imports
-import {function1, function2 } from "./blah_functions.js" ; // allows importing of functions.
+import { function1, function2 } from "./blah_functions.js"; // allows importing of functions.
 import * as myFunctions from "./my_functions.js";
 
 //default imports
 import blah from "./blah_functions.js"; //blah is a variable that gets the default.can be named anything.
 ```
+
 ---
 
 ## TOPICS to clarify
@@ -761,60 +811,79 @@ letters.forEach(letter => {
 });
 
 //comma operator, tries to increment and if fail, then assign 1,return prev
-let occ = arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
+let occ = arr.reduce(
+	(prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev),
+	{}
+);
 
 // wut? need to test this
-letters.forEach(function(a) { this[a] ? this[a]++ : this[a] = 1 }.bind(result = {}))
+letters.forEach(
+	function (a) {
+		this[a] ? this[a]++ : (this[a] = 1);
+	}.bind((result = {}))
+);
 ```
+
 ### Diff array
+
 ```js
 // only in one, not both
 function diffArray(arr1, arr2) {
-
-  let newArr = arr1.concat(arr2).filter(x => {
-    return !arr1.includes(x) || !arr2.includes(x) ;
-  })
-  return newArr;
+	let newArr = arr1.concat(arr2).filter(x => {
+		return !arr1.includes(x) || !arr2.includes(x);
+	});
+	return newArr;
 }
 diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]); // [4]
-
 ```
+
 ### Sum between [a,b]
+
 ```js
 // sum of all numbers between a and b
 function sumAll(arr) {
-  var sum = 0;
-  for (var i = Math.min(...arr); i <= Math.max(...arr); i++) {
-    sum += i;
-  }
-  return sum;
+	var sum = 0;
+	for (var i = Math.min(...arr); i <= Math.max(...arr); i++) {
+		sum += i;
+	}
+	return sum;
 }
 sumAll([1, 4]); //10
 ```
+
 ### Destroyer
+
 ```js
 // remove elements of arr based on other parameters
 function destroyer(arr) {
-  let args = Array.from(arguments).slice(1);
-  return arr.filter(x => {
-    return !args.includes(x);
-  })
+	let args = Array.from(arguments).slice(1);
+	return arr.filter(x => {
+		return !args.includes(x);
+	});
 }
 destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 ```
 
 ### Match object based properties and values
+
 ```js
 function whatIsInAName(collection, source) {
-  var srcKeys = Object.keys(source);
+	var srcKeys = Object.keys(source);
 
-  return collection.filter(function(obj) {
-    return srcKeys.every(function(key) {
-      return obj.hasOwnProperty(key) && obj[key] === source[key];
-    });
-  });
+	return collection.filter(function (obj) {
+		return srcKeys.every(function (key) {
+			return obj.hasOwnProperty(key) && obj[key] === source[key];
+		});
+	});
 }
-whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+whatIsInAName(
+	[
+		{ first: "Romeo", last: "Montague" },
+		{ first: "Mercutio", last: null },
+		{ first: "Tybalt", last: "Capulet" },
+	],
+	{ last: "Capulet" }
+);
 ```
 
 ## TOOLS

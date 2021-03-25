@@ -3,6 +3,7 @@
 ## Basics
 
 ### Include / Define
+
 ```cpp
 #include <iostream>
 #include <cmath> //math.h is old
@@ -11,21 +12,20 @@
 using namespace std; // entire std namespace
 using std::cout;  // individual std functions
 ```
+
 ### Variables
 
-```cpp
-| short (also called a short int) |  2 |  -32,767 to 32,767                                         |  N/A |
-|---------------------------------|----|------------------------------------------------------------|------|
-|  int                            |  4 |   -2,147,483,647 to 2,147,483,647                          |      |
-|  long (also called long int)    |  4 |  -2,147,483,647 to 2,147,483,647                           |      |
-|  float                          |  4 |  +/- 3.4e +/- 38                                           |  ~7  |
-|  double                         |  8 |  1.7E +/- 308                                              |  15  |
-|  long double                    |  8 |  1.7E +/- 308                                              |  15  |
-|  char                           |  1 |  All ASCII characters. Can also be used as an integer type |      |
-|  bool                           |  1 |  true, false                                               |      |
+| short (also called a short int) | 2   | -32,767 to 32,767                                         | N/A |
+| ------------------------------- | --- | --------------------------------------------------------- | --- |
+| int                             | 4   | -2,147,483,647 to 2,147,483,647                           |     |
+| long (also called long int)     | 4   | -2,147,483,647 to 2,147,483,647                           |     |
+| float                           | 4   | +/- 3.4e +/- 38                                           | ~7  |
+| double                          | 8   | 1.7E +/- 308                                              | 15  |
+| long double                     | 8   | 1.7E +/- 308                                              | 15  |
+| char                            | 1   | All ASCII characters. Can also be used as an integer type |     |
+| bool                            | 1   | true, false                                               |     |
 
 // use sizeof(var) or sizeof(int/short int/float/etc) to get size in bytes
-```
 
 ### Variable Declaration
 
@@ -96,7 +96,9 @@ strlen returns length of string not including trailing null
 sizeof returns number of bytes based on type * #elements. so sizeof(['a','b','\0'])is 3.
 std::to_string(x) //another way to cast to string, safe.
 ```
+
 ## CStrings
+
 ```cpp
 // old C type strings are char arrays with '\0' (null) at end
 
@@ -127,7 +129,9 @@ strcmp(str1, str2) // str1=str2 is 0, str1<str2 is -1, str1>str2 is 1
 ```
 
 ## Vectors
+
 ### Vector Declaration
+
 ```cpp
 // array that handles changing size
 #include <vector>  //needs
@@ -137,13 +141,15 @@ v[1] = 10; //error, must reserve space
 vector <int> v(100) // reserve space using constructor
 v[1] = 10; // works now
 
-v.resize(25); // create space for 25 items 
+v.resize(25); // create space for 25 items
 v.resize(v.size() + 25) // resizes to another 50
 
 v.size(); //gives number of elements (unsigned int)
 v.push_back(32); // adds int value of 32 to end of v
 ```
+
 ### Vector Functions
+
 ```cpp
 Function              Description
 at(size_type index)   // Returns a reference to the element at the location specified.
@@ -165,7 +171,9 @@ size()                // Returns the number of elements in the vector.
 <, <=, >, >=          // Returns true or false
 =                     // Assigns one vector to another
 ```
+
 ### Iterators
+
 ```cpp
 vector::iterator p;  // create iterator
 
@@ -179,6 +187,7 @@ for(p = v.begin(); p < v.end(); p++) //loop example
 
 cout << *p << endl; // get output this way
 ```
+
 ## Loops
 
 ### For Loop Misc
@@ -215,6 +224,7 @@ for(int i : someVector)
 ## Pointers
 
 ### Pointer Basics
+
 ```cpp
 int *ptr;  // declare pointer of type int called ptr
 int num = 0;
@@ -232,7 +242,8 @@ ptr++ // same as arr[1]
 *ptr++ // incrementing value at arr[0], 1 is now 2
 ```
 
-### Pointer to Pointer 
+### Pointer to Pointer
+
 ```cpp
 const char* c[] = {"first", "second", "third"};
 const char** cp[] = { c, c+1, c+2 };
@@ -269,7 +280,8 @@ const char*** cpp = cp;
 //**++cpp, "second"
 ```
 
-### Pointer to strings 
+### Pointer to strings
+
 ```cpp
 // behaves differently?
 int ar[] = { 1,2 };
@@ -279,7 +291,7 @@ cout << p << endl; // prints address
 char str[] = "Hello";
 char* s = str;
 cout << s << endl; // prints Hello , wut?
-	
+
 // apparently strings are handled differently
 // the << operator is overloaded for const char* which prints the string
 // int array for example is overloaded to const void* and prints the address
@@ -288,11 +300,13 @@ cout << s << endl; // prints Hello , wut?
 // same address as the array, &str;
 
 ```
-### Pointer Incrementing 
+
+### Pointer Incrementing
+
 ```cpp
 // voodoo
 while(*s){
-	cout << *s++ << endl; 
+	cout << *s++ << endl;
 }
 // why does this work? ++ increments s, not *s.
 // ++ has higher precedence than *,so
@@ -302,6 +316,7 @@ while(*s){
 ```
 
 ### Pointers to functions
+
 ```cpp
 // void function pointer can point to other functions.
 void foo();
@@ -342,11 +357,12 @@ typedef void (*func_type)(void);
 ((func_type) ptr)();
 // or
 reinterpret_cast<void(*)() > ptr)()
-// or assign to a function 
+// or assign to a function
 typedef void(*HelloWorldFunction)();
 HelloWorldFunction function = HelloWorld;
 function(); //calls HelloWorld():
 ```
+
 ## Functions
 
 ### Function info
@@ -361,6 +377,7 @@ int func(int x, int y=0); // default arg should go in prototype, not function.
 ```
 
 ## Structures
+
 ```cpp
 // customer data structure definitoin
 struct Time
@@ -372,7 +389,7 @@ struct Time
 Time t = {12,22,34}; // initialize
 t.hour = ... // init or set a value.
 Time t[5]; //array of 5 structs
-Time t[2] = { {1,2,3},{2,3,4}}; //init values 
+Time t[2] = { {1,2,3},{2,3,4}}; //init values
 
 //pointers to structs
 void somefunc(Time *tm);
@@ -390,6 +407,7 @@ t1 = t;  // this is actually a copy, not like arrays
 ## Classes
 
 ### Class header files
+
 ```cpp
 // prototypes/constants/structs/classes, etc
 
@@ -411,8 +429,9 @@ class Rectangle
 ```
 
 ### Class cpp file
+
 ```cpp
-// member functions/variables/etc, 
+// member functions/variables/etc,
 
 // Rectangle.cpp
 #include <iostream>
@@ -452,18 +471,19 @@ int Rectangle::area()
 
 // create Rectangle object on stack (short term)
 // automatic storage duration, destroyed when out of scope
-Rectangle r; 
+Rectangle r;
 r.setValue(2,4); // sets length and width
 r.area(); //returns 8
 
 // new keyword means this is stored on heap, long term. returns pointer
 // dynamically allocated objects must be deleted manually
-Rectangle *r = new Rectangle(); 
+Rectangle *r = new Rectangle();
 r->setValue(...) // pointer way.
 delete r; // must delete if using pointers, when done.
 ```
 
 ### Class Initializer List
+
 ```cpp
 // alternative way to set defaults
 
@@ -481,26 +501,27 @@ Rectangle::Rectangle(int length, int width)
 ```
 
 ### Class Inheritance
+
 ```cpp
 class Animal {
 private:
     int id;
 public:
-    Animal(): { cout << "Animal constructor" << endl; 
+    Animal(): { cout << "Animal constructor" << endl;
 	Animal(int id): id(id) {cout << "Parameter Animal constructor" << endl;
     void speak() { cout << "Grrrr" << endl; }
 };
 
 class Cat: public Animal {
 public:
-    Cat(): { cout << "Cat constructor" << endl; 
+    Cat(): { cout << "Cat constructor" << endl;
 	Cat(int id): Machine(id) { cout << "Parameter Cat constructor" << endl;
     void purr() { cout << "Purrr" << endl; }
 };
 
 class Tiger: public Cat {
 public:
-    Tiger(): { cout << "Tiger constructor" << endl; 
+    Tiger(): { cout << "Tiger constructor" << endl;
     void jump() { cout << "Tiger jumping" << endl; }
 };
 
@@ -509,11 +530,11 @@ public:
 int main(){
     Animal a;
 	a.speak();
-	
+
 	Cat cat;
 	cat.speak();
 	cat.purr();
-	
+
 	Tiger tiger;
 	tiger.speak();
 	tiger.purr();
@@ -526,18 +547,18 @@ int main(){
 virtual void speak()=0; // forces all subclasses to have an override speak() function.
 ```
 
-
-
 ### Class Notes
+
 ```cpp
 using this-> is optional. Usually do it when variable names are the same.
 private variables and function names can't be the same, collision.
-Use constructor delegation. 
+Use constructor delegation.
 Use default constructor if initializing arrays of objects.
 virtual function keyword forces subclasses to use their method, not base class. Polymorophism.
-virtual destructor should always be used also. 
+virtual destructor should always be used also.
 
 ```
+
 ## Common Preprocessor Directives
 
 ### \<iostream\>
@@ -736,8 +757,6 @@ default:
 }
 ```
 
-
-
 ## Misc
 
 ### Float Comparison
@@ -760,6 +779,7 @@ rand() / RAND_MAX; //gives a number between 0 and 1. RAND_MAX is 32767
 ```
 
 ### Colors
+
 ```cpp
 // extracting colors from 32bit number
 int color = 0x123456  // rgb, rrggbb
@@ -775,13 +795,16 @@ unsigned int char red = (color & 0x0000FF);
 cout << hex << (int)red << endl; // not sure you need to cast
 unsigned char redAgain = color >> 16; //do this instead of the bit shifting above?
 ```
+
 ### Misc Notes
+
 ```cpp
 You can't have the same variable and function names, they collide. Found this in my class private definition.
 
 ```
 
 ## THINGS To LEARN
+
 pure virtual functions
 abstract class
 template class
