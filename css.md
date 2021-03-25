@@ -9,3 +9,13 @@
   - # SubMenu Heading 2
   - [SubMenu Item 3](javascript.md)
   
+  <details>
+<summary>Example</summary>
+This is a dropdown with text!
+</details>
+
+<details>
+<summary>Example</summary>
+<ul><li>This dropdown contains</li>
+<li>a list!</li></ul>
+</details>
