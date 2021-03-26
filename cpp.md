@@ -92,9 +92,14 @@ s.insert(0,1,s[i]) //insert char at pos 0;
 num = static_cast<int>(s.at(i)); //get ascii of string character
 string str = s.substr(8,3); //return substring from position 8 and 3 characters.
 s.find("charOrString",0);returns index number where "charOrString starts. 0 is start point to searchs
+s.rfind("asfdasdf); // finds string and gets index from right side
 strlen returns length of string not including trailing null
 sizeof returns number of bytes based on type * #elements. so sizeof(['a','b','\0'])is 3.
 std::to_string(x) //another way to cast to string, safe.
+s.assign(s2); //copy 
+s.swap(s2); //swaps values
+s1.erase(20); //erases characters in string from 20th index.
+s1.replace(14,5,"aadlska"); // replaces string start at index 14,5chars with "aadlska"
 ```
 
 ## CStrings
