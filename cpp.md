@@ -558,7 +558,75 @@ virtual function keyword forces subclasses to use their method, not base class. 
 virtual destructor should always be used also.
 
 ```
+---
+## I/O
 
+### Input
+
+```cpp
+<< //stream insertion operator
+cin //stream input, clears cout buffer before use
+cin >> x >> y >> z; //take 3 inputs
+cin.clear() // if cin.fail state, cin won't take input, may cause endless loops
+cin.ignore() // after clear, read up on this
+getline(cin,str) // gets string;
+scanf
+cin.getline(str,size) // use with cstrings - see cstring section
+```
+
+### Output
+
+```cpp
+>> //stream extraction operator
+cout //stream output buffer,use endl or fflush or cin to flush
+printf
+
+cout << hex << 16 << endl; //changes output to hex
+cout << oct << 8 << endl; //changes output to octal
+
+cout << fixed << setprecision(2); //fixed just means normal numbers eg. 123.333; setprecision of 2 decimal places
+cout << dollars << endl;  // fixed length with 2 decimal places
+cout << scientific << setprecision(2); //uses scientific notation
+
+```
+
+### Error
+
+```cpp
+cerror
+```
+
+---
+## File I/O
+
+\#include <fstream> // <iostream> too.
+
+### File Input
+```cpp
+ifstream f("somefile.txt");
+int id;
+string name;
+while(f >> id >> name){
+    cout << id << ","<< name;
+}
+```
+
+### File Output
+```cpp
+
+// long version
+ofstream f;
+f.open("myfile.txt");
+// short version
+ofstream f("myfile.txt");
+//then do stuff
+f << "Adding this text to the file!\n";
+f.close();
+
+f.is_open() // check if file is open before using.
+```
+
+---
 ## Common Preprocessor Directives
 
 ### \<iostream\>
@@ -694,43 +762,7 @@ etc
 
 ---
 
-## I/O
 
-### Input
-
-```cpp
-<< //stream insertion operator
-cin //stream input, clears cout buffer before use
-cin.clear() // if cin.fail state, cin won't take input, may cause endless loops
-cin.ignore() // after clear, read up on this
-getline(cin,str) // gets string;
-scanf
-cin.getline(str,size) // use with cstrings - see cstring section
-```
-
-### Output
-
-```cpp
->> //stream extraction operator
-cout //stream output buffer,use endl or fflush or cin to flush
-printf
-
-cout << hex << 16 << endl; //changes output to hex
-cout << oct << 8 << endl; //changes output to octal
-
-cout << fixed << setprecision(2); //fixed just means normal numbers eg. 123.333; setprecision of 2 decimal places
-cout << dollars << endl;  // fixed length with 2 decimal places
-cout << scientific << setprecision(2); //uses scientific notation
-
-```
-
-### Error
-
-```cpp
-cerror
-```
-
----
 
 ## Precedences Stuff
 
