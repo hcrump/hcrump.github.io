@@ -6,7 +6,7 @@ Just some random CSS notes for myself
 
 ### Basic Starter Template
 
-```
+```css
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 
@@ -36,7 +36,7 @@ body {
 ```
 
 ### Misc
-```
+```css
 .class::before{
  content: "";     /* must add content when using ::before */
 }
