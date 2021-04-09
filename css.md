@@ -35,6 +35,41 @@ body {
 }
 ```
 
+## Selectors
+### Basic Selectors
+```css
+*    - wild card for everything
+html,body,h1,etc    - any dom element
+#id1    - element with id tag of id1
+.class1    - element with class name of class1
+```
+
+### Combo Selectors
+```css
+dom1 dom2    - Descendant, any dom2 element or class within dom1 element or class
+class1.class2    - AND, element that has both class1 and class2
+class1,class2    - OR, element that has either class1 or class2
+class1.class2 *    - all child elements of elements with both class1 and class2
+a1 > a2    - Difference, only a2 elements that are direct descendents of a1
+a1 ~ a2    - Sibling, all a2 elements that follow a1 (not descendant)
+a1 + a2    - Adjacent, a2 element that follows a1 (not descendant)
+```
+
+### Pseudo Selectors
+```css
+:first-child
+:last-child
+:nth-child(x)    - x can be integer,even,odd,formula(An+b)
+:not(class)    - element that is not part of specific class
+::before    - inserts element before
+::after    - inserts element after 
+:hover    - mouse hover
+:focus    - keyboard or program focus
+:active    - being clicked
+:link    - not clicked links
+:visited    - already clicked links
+```
+
 ### Misc
 ```css
 .class::before{
