@@ -39,8 +39,9 @@ body {
 ### Basic Selectors
 ```css
 *    - wild card for everything
-html,body,h1,etc    - any dom element
-#id1    - element with id tag of id1
+root,html    - same, but root has higher priority
+body,h1,etc    - any dom element
+\#id1    - element with id tag of id1
 .class1    - element with class name of class1
 ```
 
