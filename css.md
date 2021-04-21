@@ -42,14 +42,26 @@ a1 + a2    - Adjacent, a2 element that follows a1 (not descendant)
 :link    - not clicked links
 :visited    - already clicked links
 ```
-
+### Other
+```css
+.someclass button#open    - button with id 'open'
+```
 ### Misc
 ```css
 .class::before{
  content: "";     /* must add content when using ::before */
 }
 ```
+### Position Layout
+```css
+fixed: based on screen, must give top/bottom,left/right. stays on screen even if scroll.
+relative: position based on self. use this so children can be set to absolute based on this container.
+absolute: position based on last relative parent. defaults to html i think
+sticky: like fixed, but will move until it hits a scroll position. eg. top 0, sticks at top.
+static: default, follows normal flow.
 
+
+```
 ## Basic Starter Template
 
 ```css
