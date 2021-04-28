@@ -33,6 +33,7 @@ a1 + a2    - Adjacent, a2 element that follows a1 (not descendant)
 :first-child
 :last-child
 :nth-child(x)    - x can be integer,even,odd,formula(An+b)
+:nth-of-type(x) - more flexible than nth-child
 :not(class)    - element that is not part of specific class
 ::before    - inserts element before
 ::after    - inserts element after 

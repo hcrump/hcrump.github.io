@@ -885,7 +885,12 @@ whatIsInAName(
 	{ last: "Capulet" }
 );
 ```
+## Webdev Stuff
+```js
+window.innerheight  //y location of bottom of window
+div.getBoundingClientRect().top //y location of top of div
 
+```
 ## TOOLS
 
 ### Online tools
