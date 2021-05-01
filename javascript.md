@@ -431,6 +431,28 @@ for(let [key,value] of myMap.entries()){
 
 ## Functions
 
+### Function Expressions
+```js
+
+// buh can be used as callback
+let buh = (somevar) => {
+	do stuff...
+};
+
+// Immediately Invoked Function Expression(IIFE)
+// anonymous function, called automatically
+(function() {
+	do stuff...
+})();
+
+// another way to call anonymous function
++function() {
+	do stuff...
+}();
+
+// the IIFE's are not called on page load
+// they are called on declaration due to the ()'s
+```
 ### Function Misc
 
 ### Random Interesting Snippets
