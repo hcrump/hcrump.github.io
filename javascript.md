@@ -455,6 +455,10 @@ let buh = (somevar) => {
 ```
 ### Function Misc
 
+```js
+function declarations are hoisted to top 
+function expressions are not hoisted, so declare before use.
+```
 ### Random Interesting Snippets
 
 ```js
